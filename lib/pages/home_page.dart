@@ -1,29 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:redditify/models/post.dart';
-import 'package:redditify/repositories/posts_repository.dart';
+import 'package:provider/provider.dart';
+import 'package:redditify/presenters/posts/posts_list.dart';
+import 'package:redditify/presenters/posts/posts_loading_button.dart';
+import 'package:redditify/states/posts_state.dart';
 
-class HomePage extends StatefulWidget {
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  List<Post> _posts = [];
-  PostsRepository _postsRepository = PostsRepository();
-
-  @override
-  void initState() {
-    super.initState();
-    _postsRepository.retrievePosts();
-  }
-
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Redditify"),
+    return ChangeNotifierProvider<PostsState>(
+      builder: (context) => PostsState(),
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text("Redditify"),
+        ),
+        body: ListView(
+          children: <Widget>[
+            PostsLoadingButton(),
+            PostsList(),
+          ],
+        ),
       ),
-      body: Container(),
     );
   }
 }

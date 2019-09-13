@@ -8,10 +8,6 @@ class PostsState with ChangeNotifier {
   // Getters
   List<Post> get posts => List.from(_posts);
 
-  PostsState() {
-    print("init PostsState");
-  }
-
   PostsRepository _postsRepository = PostsRepository();
 
   Future<void> retrievePosts(String subreddit) async {

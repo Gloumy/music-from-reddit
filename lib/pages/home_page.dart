@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
         ),
         body: ListView(
           children: <Widget>[
-            PostsLoadingButton(),
+            PostsLoadingButton(subreddit: "metalcore",),
             PostsList(),
           ],
         ),

@@ -10,7 +10,11 @@ class PostsLoadingButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsetsDirectional.only(bottom: 3),
       child: RaisedButton(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(35)
+        ),
         child: Text("r/$subreddit"),
         onPressed: () =>
             Provider.of<PostsState>(context).retrievePosts("r/$subreddit"),

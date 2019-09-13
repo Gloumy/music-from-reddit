@@ -5,6 +5,8 @@ import 'package:redditify/presenters/posts/posts_loading_button.dart';
 import 'package:redditify/states/posts_state.dart';
 
 class HomePage extends StatelessWidget {
+  final List<String> _subreddits = const ["metalcore", "metal", "deathcore"];
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<PostsState>(
@@ -14,8 +16,12 @@ class HomePage extends StatelessWidget {
           title: Text("Redditify"),
         ),
         body: ListView(
+          shrinkWrap: true,
           children: <Widget>[
-            PostsLoadingButton(subreddit: "metalcore",),
+            for (String subreddit in _subreddits)
+              PostsLoadingButton(
+                subreddit: subreddit,
+              ),
             PostsList(),
           ],
         ),

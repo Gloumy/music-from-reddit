@@ -8,6 +8,13 @@ class SubredditsState extends BaseViewModel {
     "hardcore",
     "numetal"
   ];
+  String _selectedSubreddit = "metalcore";
 
   List<String> get subreddits => List.from(_subreddits);
+  String get selectedSubreddit => _selectedSubreddit;
+
+  void selectSubreddit(String subreddit) {
+    _selectedSubreddit = subreddit;
+    notifyListeners();
+  }
 }

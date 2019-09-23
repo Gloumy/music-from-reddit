@@ -17,6 +17,7 @@ class SubredditsList extends StatelessWidget {
             for (String subreddit in state.subreddits)
               PostsLoadingButton(
                 subreddit: subreddit,
+                isSelected: state.selectedSubreddit == subreddit,
               )
           ],
         );

@@ -17,4 +17,10 @@ class GlobalState extends BaseViewModel {
     _postsState = PostsState();
     _subredditsState = SubredditsState();
   }
+
+  void selectSubreddit(String subreddit) {
+    _subredditsState.selectSubreddit(subreddit);
+
+    notifyListeners();
+  }
 }

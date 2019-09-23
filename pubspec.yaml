@@ -27,6 +27,7 @@ dependencies:
   cupertino_icons: ^0.1.2
   youtube_extractor: ^1.0.4
   audioplayers: ^0.13.2
+  provider_assist: ^1.5.0
 
 dev_dependencies:
   flutter_test:

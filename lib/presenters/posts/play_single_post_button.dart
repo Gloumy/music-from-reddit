@@ -2,12 +2,18 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:youtube_extractor/youtube_extractor.dart';
 
-class PlaySinglePostButton extends StatelessWidget {
+class PlaySinglePostButton extends StatefulWidget {
   final String url;
 
-  String get urlId => _getYoutubeId(url);
-
   const PlaySinglePostButton({Key key, this.url}) : super(key: key);
+
+  @override
+  _PlaySinglePostButtonState createState() => _PlaySinglePostButtonState();
+}
+
+class _PlaySinglePostButtonState extends State<PlaySinglePostButton> {
+  String get urlId => _getYoutubeId(widget.url);
+  bool _playing = false;
 
   String _getYoutubeId(String url) {
     RegExp exp = RegExp(
@@ -17,6 +23,9 @@ class PlaySinglePostButton extends StatelessWidget {
 
   void _playAudio() async {
     var streamInfo = await YouTubeExtractor().getMediaStreamsAsync(urlId);
+    setState(() {
+      _playing = true;
+    });
     await AudioPlayer().play(streamInfo.audio.first.url);
   }
 
@@ -25,7 +34,7 @@ class PlaySinglePostButton extends StatelessWidget {
     return Expanded(
       flex: 2,
       child: GestureDetector(
-        child: Icon(Icons.play_circle_outline),
+        child: Icon(_playing ? Icons.pause_circle_outline : Icons.play_circle_outline),
         onTap: () {
           _playAudio();
         },

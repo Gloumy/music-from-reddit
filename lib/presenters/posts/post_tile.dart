@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:redditify/models/post.dart';
+import 'package:redditify/presenters/posts/play_single_post_button.dart';
 
 class PostTile extends StatelessWidget {
   final Post post;
@@ -22,10 +23,7 @@ class PostTile extends StatelessWidget {
             flex: 4,
             child: Text(post.title),
           ),
-          Expanded(
-            flex: 2,
-            child: Icon(Icons.play_circle_outline),
-          ),
+          PlaySinglePostButton(url: post.url),
         ],
       ),
     );

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:provider_assist/base_view.dart';
+import 'package:redditify/presenters/posts/posts_list.dart';
 import 'package:redditify/presenters/subreddits/subreddits_list.dart';
-import 'package:redditify/states/global_state.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -16,6 +15,7 @@ class HomePage extends StatelessWidget {
         child: Column(
           children: <Widget>[
             SubredditsList(),
+            PostsList(),
           ],
         ),
       ),

@@ -6,24 +6,19 @@ import 'package:redditify/states/global_state.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BaseView<GlobalState>(
-      model: GlobalState(),
-      builder: (context, vm, layout) {
-        return Scaffold(
-          appBar: AppBar(
-            title: Text("Music From Reddit"),
-            centerTitle: true,
-          ),
-          body: Container(
-            margin: EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
-            child: Column(
-              children: <Widget>[
-                SubredditsList(),
-              ],
-            ),
-          ),
-        );
-      },
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Music From Reddit"),
+        centerTitle: true,
+      ),
+      body: Container(
+        margin: EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
+        child: Column(
+          children: <Widget>[
+            SubredditsList(),
+          ],
+        ),
+      ),
     );
   }
   // YouTubeExtractor extractor = YouTubeExtractor();

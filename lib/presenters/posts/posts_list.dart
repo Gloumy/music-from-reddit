@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider_assist/base_view.dart';
+import 'package:redditify/presenters/posts/post_tile.dart';
 import 'package:redditify/states/posts_state.dart';
 import 'package:redditify/states/global_state.dart';
 
@@ -11,14 +12,11 @@ class PostsList extends StatelessWidget {
       model: Provider.of<GlobalState>(context).postsState,
       builder: (context, state, _) {
         return Expanded(
-          child: ListView.separated(
-            separatorBuilder: (context, index) => Divider(),
+          child: ListView.builder(
             shrinkWrap: true,
             itemCount: state.posts.length,
             itemBuilder: (context, index) {
-              return Text(
-                state.posts[index].title,
-              );
+              return PostTile(post: state.posts[index]);
             },
           ),
         );

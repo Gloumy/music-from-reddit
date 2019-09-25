@@ -20,7 +20,7 @@ class GlobalState extends BaseViewModel {
 
   void selectSubreddit(String subreddit) {
     _subredditsState.selectSubreddit(subreddit);
-
+    _postsState.retrievePosts(subreddit);
     notifyListeners();
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:redditify/services/play_audio_service.dart';
+import 'package:provider/provider.dart';
+import 'package:redditify/states/global_state.dart';
 
 class PlaySinglePostButton extends StatefulWidget {
   final String url;
@@ -22,7 +23,7 @@ class _PlaySinglePostButtonState extends State<PlaySinglePostButton> {
             // _playing ? Icons.pause_circle_outline : Icons.play_circle_outline),
             Icons.play_circle_outline),
         onTap: () {
-          PlayAudioService(youtubeUrl: _youtubeUrl).playAudio();
+          Provider.of<GlobalState>(context).playSong(_youtubeUrl);
         },
       ),
     );

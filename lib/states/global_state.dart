@@ -1,13 +1,16 @@
 import 'package:provider_assist/provider_assist.dart';
+import 'package:redditify/states/player_state.dart';
 import 'package:redditify/states/posts_state.dart';
 import 'package:redditify/states/subreddits_state.dart';
 
 class GlobalState extends BaseViewModel {
   PostsState _postsState;
   SubredditsState _subredditsState;
+  PlayerState _playerState;
 
   PostsState get postsState => _postsState;
   SubredditsState get subredditsState => _subredditsState;
+  PlayerState get playerState => _playerState;
 
   GlobalState() {
     _initializeStates();
@@ -16,11 +19,16 @@ class GlobalState extends BaseViewModel {
   void _initializeStates() {
     _postsState = PostsState();
     _subredditsState = SubredditsState();
+    _playerState = PlayerState();
   }
 
   void selectSubreddit(String subreddit) {
     _subredditsState.selectSubreddit(subreddit);
     _postsState.retrievePosts(subreddit);
     notifyListeners();
+  }
+
+  void playSong(String youtubeUrl) async {
+    await _playerState.playSong(youtubeUrl);
   }
 }

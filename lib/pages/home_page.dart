@@ -21,47 +21,4 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
-  // YouTubeExtractor extractor = YouTubeExtractor();
-  // var streamInfo;
-
-  // final List<String> _subreddits = const ["metalcore", "metal", "deathcore"];
-
-  // void _getAudioStream() async {
-  //   streamInfo = await extractor.getMediaStreamsAsync('rqMrZlLJXRA');
-  //   print("Audio url : ${streamInfo.audio.first.url}");
-  // }
-
-  // void _playFromUrl() async {
-  //   int result = await AudioPlayer().play(streamInfo.audio.first.url);
-  // }
-
-  // @override
-  // Widget build(BuildContext context) {
-  //   return ChangeNotifierProvider<PostsState>(
-  //     builder: (context) => PostsState(),
-  //     child: Scaffold(
-  //       appBar: AppBar(
-  //         title: Text("Redditify"),
-  //       ),
-  //       body: ListView(
-  //         shrinkWrap: true,
-  //         children: <Widget>[
-  //           RaisedButton(
-  //             child: Text("Test extractor"),
-  //             onPressed: _getAudioStream,
-  //           ),
-  //           RaisedButton(
-  //             child: Text("play"),
-  //             onPressed: _playFromUrl,
-  //           )
-  //           // for (String subreddit in _subreddits)
-  //           //   PostsLoadingButton(
-  //           //     subreddit: subreddit,
-  //           //   ),
-  //           // PostsList(),
-  //         ],
-  //       ),
-  //     ),
-  //   );
-  // }
 }

@@ -1,9 +1,9 @@
-import 'package:provider_assist/provider_assist.dart';
+import 'package:flutter/foundation.dart';
 import 'package:redditify/states/player_state.dart';
 import 'package:redditify/states/posts_state.dart';
 import 'package:redditify/states/subreddits_state.dart';
 
-class GlobalState extends BaseViewModel {
+class GlobalState with ChangeNotifier {
   PostsState _postsState;
   SubredditsState _subredditsState;
   PlayerState _playerState;

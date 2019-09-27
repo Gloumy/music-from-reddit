@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:provider_assist/base_view.dart';
+import 'package:provider/provider.dart';
 import 'package:redditify/pages/home_page.dart';
 import 'package:redditify/states/global_state.dart';
+import 'package:redditify/states/player_state.dart';
+import 'package:redditify/states/posts_state.dart';
+import 'package:redditify/states/subreddits_state.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+  final GlobalState _globalState = GlobalState();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -13,11 +18,22 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: BaseView<GlobalState>(
-        model: GlobalState(),
-        builder: (context, state, layout) {
-          return HomePage();
-        },
+      home: MultiProvider(
+        providers: [
+          ChangeNotifierProvider<GlobalState>.value(
+            value: _globalState,
+          ),
+          ChangeNotifierProvider<SubredditsState>.value(
+            value: _globalState.subredditsState,
+          ),
+          ChangeNotifierProvider<PostsState>.value(
+            value: _globalState.postsState,
+          ),
+          ChangeNotifierProvider<PlayerState>.value(
+            value: _globalState.playerState,
+          ),
+        ],
+        child: HomePage(),
       ),
     );
   }

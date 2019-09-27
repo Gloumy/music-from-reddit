@@ -1,8 +1,8 @@
-import 'package:provider_assist/base_view_model.dart';
+import 'package:flutter/material.dart';
 import 'package:redditify/models/post.dart';
 import 'package:redditify/repositories/posts_repository.dart';
 
-class PostsState extends BaseViewModel {
+class PostsState with ChangeNotifier {
   List<Post> _posts = [];
 
   // Getters

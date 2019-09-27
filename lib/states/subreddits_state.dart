@@ -1,6 +1,6 @@
-import 'package:provider_assist/base_view_model.dart';
+import 'package:flutter/widgets.dart';
 
-class SubredditsState extends BaseViewModel {
+class SubredditsState with ChangeNotifier {
   List<String> _subreddits = [
     "metalcore",
     "metal",

@@ -1,7 +1,7 @@
-import 'package:provider_assist/provider_assist.dart';
+import 'package:flutter/foundation.dart';
 import 'package:redditify/services/play_audio_service.dart';
 
-class PlayerState extends BaseViewModel {
+class PlayerState with ChangeNotifier {
   final PlayAudioService _playAudioService = PlayAudioService();
   bool _isPlaying = false;
 

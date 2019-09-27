@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:redditify/states/global_state.dart';
 import 'package:redditify/utils/routes.dart';
 
-class PostsLoadingButton extends StatelessWidget {
+class SubredditSelectionButton extends StatelessWidget {
   final String subreddit;
   final bool isSelected;
 
-  const PostsLoadingButton({
+  const SubredditSelectionButton({
     Key key,
     this.subreddit,
     this.isSelected,

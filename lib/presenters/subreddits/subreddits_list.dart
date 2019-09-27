@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:redditify/presenters/posts/posts_loading_button.dart';
+import 'package:redditify/presenters/subreddits/subreddit_selection_button.dart';
 import 'package:redditify/states/subreddits_state.dart';
 
 class SubredditsList extends StatelessWidget {
@@ -12,7 +12,7 @@ class SubredditsList extends StatelessWidget {
           spacing: 3.0,
           children: <Widget>[
             for (String subreddit in state.subreddits)
-              PostsLoadingButton(
+              SubredditSelectionButton(
                 subreddit: subreddit,
                 isSelected: state.selectedSubreddit == subreddit,
               )

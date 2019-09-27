@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:redditify/states/global_state.dart';
+import 'package:redditify/utils/routes.dart';
 
 class PostsLoadingButton extends StatelessWidget {
   final String subreddit;
@@ -20,7 +21,9 @@ class PostsLoadingButton extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(35)),
         child: Text("r/$subreddit"),
         onPressed: () =>
-            Provider.of<GlobalState>(context).selectSubreddit(subreddit),
+            // Provider.of<GlobalState>(context).selectSubreddit(subreddit),
+            Routes.sailor
+                .navigate("/subreddit", params: {"subreddit": subreddit}),
         color: isSelected ? Colors.blue : null,
       ),
     );

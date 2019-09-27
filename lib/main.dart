@@ -5,8 +5,12 @@ import 'package:redditify/states/global_state.dart';
 import 'package:redditify/states/player_state.dart';
 import 'package:redditify/states/posts_state.dart';
 import 'package:redditify/states/subreddits_state.dart';
+import 'package:redditify/utils/routes.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  Routes.createRoutes();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   final GlobalState _globalState = GlobalState();
@@ -15,6 +19,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Redditify',
+      navigatorKey: Routes.sailor.navigatorKey, // important
+      onGenerateRoute: Routes.sailor.generator(),
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),

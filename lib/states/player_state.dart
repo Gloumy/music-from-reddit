@@ -31,4 +31,10 @@ class PlayerState with ChangeNotifier {
       _playAudioService.playAudio(_playlist[_currentSongIndex].url);
     });
   }
+
+  Future<void> stopAudio() async {
+    _playAudioService.audioPlayer.stop();
+    _isPlaying = false;
+    notifyListeners();
+  }
 }

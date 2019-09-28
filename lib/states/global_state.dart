@@ -37,4 +37,8 @@ class GlobalState with ChangeNotifier {
     List<Post> playlist = List.from(postsState.posts);
     _playerState.playSongList(playlist);
   }
+
+  void stopAudio() async {
+    _playerState.stopAudio();
+  }
 }

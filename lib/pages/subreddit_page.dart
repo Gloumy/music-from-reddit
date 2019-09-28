@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:redditify/presenters/player/play_posts_button.dart';
+import 'package:redditify/presenters/player/floating_player_button_visibility.dart';
 import 'package:redditify/presenters/posts/posts_list.dart';
 import 'package:redditify/states/global_state.dart';
 import 'package:redditify/states/subreddits_state.dart';
@@ -28,7 +28,7 @@ class SubredditPage extends StatelessWidget {
             ],
           ),
         ),
-        floatingActionButton: PlayPostsButton(),
+        floatingActionButton: FloatingPlayerButtonVisibility(),
       ),
     );
   }

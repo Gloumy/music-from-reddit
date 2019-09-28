@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:redditify/states/global_state.dart';
 import 'package:redditify/utils/routes.dart';
 
 class SubredditSelectionButton extends StatelessWidget {
@@ -18,10 +20,11 @@ class SubredditSelectionButton extends StatelessWidget {
       child: RaisedButton(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(35)),
         child: Text("r/$subreddit"),
-        onPressed: () =>
-            // Provider.of<GlobalState>(context).selectSubreddit(subreddit),
-            Routes.sailor
-                .navigate("/subreddit", params: {"subreddit": subreddit}),
+        onPressed: () {
+          Provider.of<GlobalState>(context).selectSubreddit(subreddit);
+          Routes.sailor
+              .navigate("/subreddit", params: {"subreddit": subreddit});
+        },
         color: isSelected ? Colors.blue : null,
       ),
     );

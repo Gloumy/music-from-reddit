@@ -12,8 +12,11 @@ class PostsState with ChangeNotifier {
   PostsRepository _postsRepository = PostsRepository();
 
   Future<void> retrievePosts(String subreddit) async {
+    notifyListeners();
+
     _posts = await _postsRepository.retrievePosts(subreddit);
     filterYoutubePosts();
+
     notifyListeners();
   }
 

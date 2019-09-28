@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:redditify/models/post.dart';
 import 'package:redditify/states/player_state.dart';
 import 'package:redditify/states/posts_state.dart';
 import 'package:redditify/states/subreddits_state.dart';
@@ -30,5 +31,10 @@ class GlobalState with ChangeNotifier {
 
   void playSong(String youtubeUrl) async {
     await _playerState.playSong(youtubeUrl);
+  }
+
+  void playSongList() async {
+    List<Post> playlist = List.from(postsState.posts);
+    _playerState.playSongList(playlist);
   }
 }

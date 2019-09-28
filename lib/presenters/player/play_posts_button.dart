@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:redditify/states/global_state.dart';
 import 'package:redditify/states/posts_state.dart';
 
 class PlayPostsButton extends StatelessWidget {
@@ -11,7 +12,7 @@ class PlayPostsButton extends StatelessWidget {
           visible: state.posts.isNotEmpty,
           child: FloatingActionButton(
             child: Icon(Icons.playlist_play),
-            onPressed: () {},
+            onPressed: () => Provider.of<GlobalState>(context).playSongList(),
           ),
         );
       },

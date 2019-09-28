@@ -7,6 +7,8 @@ class PlayAudioService {
 
   String _youtubeId;
 
+  AudioPlayer get audioPlayer => _audioPlayer;
+
   void _getYoutubeId(String youtubeUrl) {
     RegExp exp = RegExp(
         r"(?:youtube(?:-nocookie)?\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})");

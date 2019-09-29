@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:redditify/presenters/player/player_button_visibility.dart';
+import 'package:redditify/presenters/posts/posts_count.dart';
 import 'package:redditify/presenters/posts/posts_list.dart';
 import 'package:redditify/presenters/subreddits/subreddit_sort_wrap.dart';
 import 'package:redditify/states/global_state.dart';
@@ -28,6 +29,7 @@ class SubredditPage extends StatelessWidget {
             children: <Widget>[
               SubredditSortWrap(),
               PlayerButtonVisibility(),
+              PostsCount(),
               PostsList(),
             ],
           ),

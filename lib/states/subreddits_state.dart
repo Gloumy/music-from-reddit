@@ -9,12 +9,15 @@ class SubredditsState with ChangeNotifier {
     "numetal"
   ];
   String _selectedSubreddit;
+  String _sortBy = "new";
 
   List<String> get subreddits => List.from(_subreddits);
   String get selectedSubreddit => _selectedSubreddit;
+  String get sortBy => _sortBy;
 
-  void selectSubreddit(String subreddit) {
+  void selectSubreddit(String subreddit, String sortBy) {
     _selectedSubreddit = subreddit;
+    _sortBy = sortBy;
     notifyListeners();
   }
 }

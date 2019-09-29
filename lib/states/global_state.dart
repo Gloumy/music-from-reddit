@@ -23,9 +23,9 @@ class GlobalState with ChangeNotifier {
     _playerState = PlayerState();
   }
 
-  void selectSubreddit(String subreddit) {
-    _subredditsState.selectSubreddit(subreddit);
-    _postsState.retrievePosts(subreddit);
+  void selectSubreddit(String subreddit, {String sortBy = "new"}) {
+    _subredditsState.selectSubreddit(subreddit, sortBy);
+    _postsState.retrievePosts(subreddit, sortBy);
     notifyListeners();
   }
 

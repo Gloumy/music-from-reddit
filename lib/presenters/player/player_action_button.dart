@@ -7,8 +7,14 @@ class PlayerActionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<PlayerState>(builder: (context, state, _) {
-      return FloatingActionButton(
-        child: state.isPlaying ? Icon(Icons.stop) : Icon(Icons.playlist_play),
+      return RaisedButton.icon(
+        icon: state.isPlaying
+            ? Icon(
+                Icons.stop,
+                color: Colors.red,
+              )
+            : Icon(Icons.playlist_play),
+        label: state.isPlaying ? Text("Stop") : Text("Play all"),
         onPressed: () => state.isPlaying
             ? Provider.of<GlobalState>(context).stopAudio()
             : Provider.of<GlobalState>(context).playSongList(),

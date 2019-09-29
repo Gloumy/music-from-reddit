@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:redditify/presenters/player/player_action_button.dart';
 import 'package:redditify/states/posts_state.dart';
 
-class FloatingPlayerButtonVisibility extends StatelessWidget {
+class PlayerButtonVisibility extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<PostsState>(

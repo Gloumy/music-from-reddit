@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:redditify/presenters/player/floating_player_button_visibility.dart';
+import 'package:redditify/presenters/player/player_button_visibility.dart';
 import 'package:redditify/presenters/posts/posts_list.dart';
 import 'package:redditify/states/global_state.dart';
 import 'package:redditify/states/subreddits_state.dart';
 import 'package:sailor/sailor.dart';
 
 class SubredditPage extends StatelessWidget {
+  final List<String> _sortBys = ["new", "hot", "top", "rising"];
+
   @override
   Widget build(BuildContext context) {
     final String subreddit = Sailor.param<String>(context, 'subreddit');
@@ -19,16 +21,26 @@ class SubredditPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text("r/$subreddit"),
+          centerTitle: true,
         ),
         body: Container(
           margin: EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
           child: Column(
             children: <Widget>[
+              Wrap(
+                spacing: 3.0,
+                children: <Widget>[
+                  for (String sortBy in _sortBys)
+                    Chip(
+                      label: Text(sortBy),
+                    )
+                ],
+              ),
+              PlayerButtonVisibility(),
               PostsList(),
             ],
           ),
         ),
-        floatingActionButton: FloatingPlayerButtonVisibility(),
       ),
     );
   }

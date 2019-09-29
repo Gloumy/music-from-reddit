@@ -13,6 +13,10 @@ class PlayerState with ChangeNotifier {
   List<Post> get playlist => List.from(_playlist);
   int get currentSongIndex => _currentSongIndex;
 
+  String get currentSongTitle {
+    return _playlist[_currentSongIndex].title;
+  }
+
   Future<void> playSong(String youtubeUrl) async {
     _isPlaying = true;
     notifyListeners();
@@ -28,6 +32,7 @@ class PlayerState with ChangeNotifier {
     notifyListeners();
     _playAudioService.audioPlayer.onPlayerCompletion.listen((event) {
       _currentSongIndex++;
+      notifyListeners();
       _playAudioService.playAudio(_playlist[_currentSongIndex].url);
     });
   }

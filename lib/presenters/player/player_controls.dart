@@ -12,9 +12,18 @@ class PlayerControls extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
-              Icon(Icons.skip_previous),
-              Icon(Icons.play_arrow),
-              Icon(Icons.skip_next),
+              GestureDetector(
+                child: Icon(Icons.skip_previous),
+                onTap: () => state.playPreviousSong(),
+              ),
+              GestureDetector(
+                child: Icon(Icons.play_arrow),
+                onTap: () {},
+              ),
+              GestureDetector(
+                child: Icon(Icons.skip_next),
+                onTap: () => state.playNextSong(),
+              ),
             ],
           ),
         );

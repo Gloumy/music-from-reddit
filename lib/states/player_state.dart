@@ -31,9 +31,7 @@ class PlayerState with ChangeNotifier {
     _isPlaying = true;
     notifyListeners();
     _playAudioService.audioPlayer.onPlayerCompletion.listen((event) {
-      _currentSongIndex++;
-      notifyListeners();
-      _playAudioService.playAudio(_playlist[_currentSongIndex].url);
+      playNextSong();
     });
   }
 
@@ -41,5 +39,17 @@ class PlayerState with ChangeNotifier {
     _playAudioService.audioPlayer.stop();
     _isPlaying = false;
     notifyListeners();
+  }
+
+  Future<void> playNextSong() async {
+    _currentSongIndex++;
+    notifyListeners();
+    _playAudioService.playAudio(_playlist[_currentSongIndex].url);
+  }
+
+  Future<void> playPreviousSong() async {
+    _currentSongIndex--;
+    notifyListeners();
+    _playAudioService.playAudio(_playlist[_currentSongIndex].url);
   }
 }

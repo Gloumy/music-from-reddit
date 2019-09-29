@@ -14,7 +14,10 @@ class PlayerControls extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
               GestureDetector(
-                child: Icon(Icons.skip_previous),
+                child: Icon(
+                  Icons.skip_previous,
+                  color: state.canPlayPrevious ? null : Colors.grey,
+                ),
                 onTap: () => state.playPreviousSong(),
               ),
               if (state.audioPlayerState == AudioPlayerState.PAUSED)
@@ -32,7 +35,10 @@ class PlayerControls extends StatelessWidget {
                 onTap: () => state.stopAudio(),
               ),
               GestureDetector(
-                child: Icon(Icons.skip_next),
+                child: Icon(
+                  Icons.skip_next,
+                  color: state.canPlayNext ? null : Colors.grey,
+                ),
                 onTap: () => state.playNextSong(),
               ),
             ],

@@ -29,8 +29,8 @@ class GlobalState with ChangeNotifier {
     notifyListeners();
   }
 
-  void playSong(String youtubeUrl) async {
-    await _playerState.playSong(youtubeUrl);
+  void playSong(String youtubeUrl, String title) async {
+    await _playerState.playSong(youtubeUrl, title);
   }
 
   void playSongList() async {

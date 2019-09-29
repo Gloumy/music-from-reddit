@@ -4,8 +4,13 @@ import 'package:redditify/states/global_state.dart';
 
 class PlaySinglePostButton extends StatefulWidget {
   final String url;
+  final String title;
 
-  const PlaySinglePostButton({Key key, this.url}) : super(key: key);
+  const PlaySinglePostButton({
+    Key key,
+    this.url,
+    this.title,
+  }) : super(key: key);
 
   @override
   _PlaySinglePostButtonState createState() => _PlaySinglePostButtonState();
@@ -13,6 +18,7 @@ class PlaySinglePostButton extends StatefulWidget {
 
 class _PlaySinglePostButtonState extends State<PlaySinglePostButton> {
   String get _youtubeUrl => widget.url;
+  String get _title => widget.title;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +29,7 @@ class _PlaySinglePostButtonState extends State<PlaySinglePostButton> {
             // _playing ? Icons.pause_circle_outline : Icons.play_circle_outline),
             Icons.play_circle_outline),
         onTap: () {
-          Provider.of<GlobalState>(context).playSong(_youtubeUrl);
+          Provider.of<GlobalState>(context).playSong(_youtubeUrl, _title);
         },
       ),
     );

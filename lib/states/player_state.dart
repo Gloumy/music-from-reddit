@@ -9,27 +9,34 @@ class PlayerState with ChangeNotifier {
   List<Post> _playlist = [];
   int _currentSongIndex;
   AudioPlayerState _audioPlayerState;
+  String _currentSongTitle;
 
   PlayAudioService get playAudioService => _playAudioService;
   bool get isPlaying => _isPlaying;
   List<Post> get playlist => List.from(_playlist);
   int get currentSongIndex => _currentSongIndex;
   AudioPlayerState get audioPlayerState => _audioPlayerState;
+  String get currentSongTitle => _currentSongTitle;
+
+  bool get canPlayPrevious => _playlist.isNotEmpty && _currentSongIndex > 0;
+  bool get canPlayNext =>
+      _playlist.isNotEmpty && _currentSongIndex < _playlist.length;
 
   PlayerState() {
     _playAudioService.audioPlayer.onPlayerStateChanged
         .listen((AudioPlayerState state) {
       _audioPlayerState = state;
-      print(state);
       notifyListeners();
+    });
+
+    _playAudioService.audioPlayer.onPlayerCompletion.listen((event) {
+      stopAudio();
     });
   }
 
-  String get currentSongTitle {
-    return _playlist[_currentSongIndex].title;
-  }
-
-  Future<void> playSong(String youtubeUrl) async {
+  Future<void> playSong(String youtubeUrl, String title) async {
+    _playlist = [];
+    _currentSongTitle = title;
     _isPlaying = true;
     notifyListeners();
 
@@ -39,11 +46,12 @@ class PlayerState with ChangeNotifier {
   Future<void> playSongList(List<Post> playlist) async {
     _playlist = playlist;
     _currentSongIndex = 0;
+    _currentSongTitle = _playlist[_currentSongIndex].title;
     _playAudioService.playAudio(_playlist.first.url);
     _isPlaying = true;
     notifyListeners();
     _playAudioService.audioPlayer.onPlayerCompletion.listen((event) {
-      if (_currentSongIndex < _playlist.length) {
+      if (canPlayNext) {
         playNextSong();
       } else {
         stopAudio();
@@ -55,20 +63,27 @@ class PlayerState with ChangeNotifier {
     _playAudioService.audioPlayer.stop();
     _currentSongIndex = 0;
     _playlist = [];
+    _currentSongTitle = "";
     _isPlaying = false;
     notifyListeners();
   }
 
   Future<void> playNextSong() async {
-    _currentSongIndex++;
-    notifyListeners();
-    _playAudioService.playAudio(_playlist[_currentSongIndex].url);
+    if (canPlayNext) {
+      _currentSongIndex++;
+      _currentSongTitle = _playlist[_currentSongIndex].title;
+      notifyListeners();
+      _playAudioService.playAudio(_playlist[_currentSongIndex].url);
+    }
   }
 
   Future<void> playPreviousSong() async {
-    _currentSongIndex--;
-    notifyListeners();
-    _playAudioService.playAudio(_playlist[_currentSongIndex].url);
+    if (canPlayPrevious) {
+      _currentSongIndex--;
+      _currentSongTitle = _playlist[_currentSongIndex].title;
+      notifyListeners();
+      _playAudioService.playAudio(_playlist[_currentSongIndex].url);
+    }
   }
 
   Future<void> pauseAudio() async {

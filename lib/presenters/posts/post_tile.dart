@@ -23,7 +23,10 @@ class PostTile extends StatelessWidget {
             flex: 4,
             child: Text(post.title),
           ),
-          PlaySinglePostButton(url: post.url),
+          PlaySinglePostButton(
+            url: post.url,
+            title: post.title,
+          ),
         ],
       ),
     );

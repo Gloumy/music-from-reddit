@@ -35,6 +35,7 @@ class GlobalState with ChangeNotifier {
 
   void playSongList() async {
     List<Post> playlist = List.from(postsState.posts);
+    _playerState.setPlaylistName(_subredditsState.selectedSubreddit);
     _playerState.playSongList(playlist);
   }
 

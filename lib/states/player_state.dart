@@ -7,6 +7,7 @@ class PlayerState with ChangeNotifier {
   final PlayAudioService _playAudioService = PlayAudioService();
   bool _isPlaying = false;
   List<Post> _playlist = [];
+  String _playlistName;
   int _currentSongIndex;
   AudioPlayerState _audioPlayerState;
   String _currentSongTitle;
@@ -14,6 +15,7 @@ class PlayerState with ChangeNotifier {
   PlayAudioService get playAudioService => _playAudioService;
   bool get isPlaying => _isPlaying;
   List<Post> get playlist => List.from(_playlist);
+  String get playlistName => _playlistName;
   int get currentSongIndex => _currentSongIndex;
   AudioPlayerState get audioPlayerState => _audioPlayerState;
   String get currentSongTitle => _currentSongTitle;
@@ -93,5 +95,10 @@ class PlayerState with ChangeNotifier {
 
   Future<void> resumeAudio() async {
     _playAudioService.audioPlayer.resume();
+  }
+
+  void setPlaylistName(String name) {
+    _playlistName = name;
+    notifyListeners();
   }
 }

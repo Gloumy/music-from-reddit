@@ -28,10 +28,6 @@ class PlayerState with ChangeNotifier {
       _audioPlayerState = state;
       notifyListeners();
     });
-
-    _playAudioService.audioPlayer.onPlayerCompletion.listen((event) {
-      stopAudio();
-    });
   }
 
   Future<void> playSong(String youtubeUrl, String title) async {
@@ -51,6 +47,7 @@ class PlayerState with ChangeNotifier {
     _isPlaying = true;
     notifyListeners();
     _playAudioService.audioPlayer.onPlayerCompletion.listen((event) {
+      print(canPlayNext);
       if (canPlayNext) {
         playNextSong();
       } else {

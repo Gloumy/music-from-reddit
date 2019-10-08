@@ -47,9 +47,13 @@ class PlayerState with ChangeNotifier {
     _isPlaying = true;
     notifyListeners();
     _playAudioService.audioPlayer.onPlayerCompletion.listen((event) {
-      print(canPlayNext);
       if (canPlayNext) {
-        playNextSong();
+        try {
+          playNextSong();
+        } catch (e) {
+          print("unable to load song");
+          playNextSong();
+        }
       } else {
         stopAudio();
       }

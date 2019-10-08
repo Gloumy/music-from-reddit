@@ -1,17 +1,12 @@
 import 'package:flutter/widgets.dart';
+import 'package:redditify/utils/subreddits_list.dart';
 
 class SubredditsState with ChangeNotifier {
-  List<String> _subreddits = [
-    "metalcore",
-    "metal",
-    "djent",
-    "hardcore",
-    "numetal"
-  ];
+  List<Map<String,dynamic>> _subreddits = subredditsList;
   String _selectedSubreddit;
   String _sortBy = "new";
 
-  List<String> get subreddits => List.from(_subreddits);
+  List<Map<String,dynamic>> get subreddits => List.from(_subreddits);
   String get selectedSubreddit => _selectedSubreddit;
   String get sortBy => _sortBy;
 

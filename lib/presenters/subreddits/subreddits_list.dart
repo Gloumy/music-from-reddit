@@ -8,15 +8,27 @@ class SubredditsList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<SubredditsState>(
       builder: (context, state, _) {
-        return Wrap(
-          spacing: 3.0,
-          children: <Widget>[
-            for (String subreddit in state.subreddits)
-              SubredditSelectionButton(
-                subreddit: subreddit,
-                isSelected: state.selectedSubreddit == subreddit,
-              )
-          ],
+        return Expanded(
+          child: ListView(
+            children: <Widget>[
+              for (Map<String, dynamic> genre in state.subreddits)
+                ExpansionTile(
+                  title: Center(child: Text(genre["title"])),
+                  children: <Widget>[
+                    Wrap(
+                      spacing: 3.0,
+                      children: <Widget>[
+                        for (String subreddit in genre["subreddits"])
+                          SubredditSelectionButton(
+                            subreddit: subreddit,
+                            isSelected: state.selectedSubreddit == subreddit,
+                          )
+                      ],
+                    ),
+                  ],
+                )
+            ],
+          ),
         );
       },
     );

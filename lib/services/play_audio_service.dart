@@ -2,7 +2,6 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:youtube_extractor/youtube_extractor.dart';
 
 class PlayAudioService {
-  YouTubeExtractor _extractor = YouTubeExtractor();
   AudioPlayer _audioPlayer = AudioPlayer();
 
   String _youtubeId;
@@ -17,7 +16,8 @@ class PlayAudioService {
 
   Future<void> playAudio(String youtubeUrl) async {
     _getYoutubeId(youtubeUrl);
-    var streamInfo = await _extractor.getMediaStreamsAsync(_youtubeId);
+    // Use a new extractor for each request to avoid client close
+    var streamInfo = await YouTubeExtractor().getMediaStreamsAsync(_youtubeId);
 
     await _audioPlayer.play(streamInfo.audio.first.url);
   }

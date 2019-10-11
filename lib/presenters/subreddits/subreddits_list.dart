@@ -16,6 +16,7 @@ class SubredditsList extends StatelessWidget {
                   title: Center(child: Text(genre["title"])),
                   children: <Widget>[
                     Wrap(
+                      alignment: WrapAlignment.center,
                       spacing: 3.0,
                       children: <Widget>[
                         for (String subreddit in genre["subreddits"])

@@ -4,38 +4,59 @@ import 'package:redditify/presenters/player/current_song_title.dart';
 import 'package:redditify/presenters/player/player_controls.dart';
 import 'package:redditify/states/player_state.dart';
 
-class PlayerBottomSheet extends StatelessWidget {
+class PlayerBottomSheet extends StatefulWidget {
+  @override
+  _PlayerBottomSheetState createState() => _PlayerBottomSheetState();
+}
+
+class _PlayerBottomSheetState extends State<PlayerBottomSheet> {
+  bool _isExpanded = false;
+
   @override
   Widget build(BuildContext context) {
     return Consumer<PlayerState>(
       builder: (context, state, _) {
         return Visibility(
           visible: state.isPlaying,
-          child: BottomSheet(
-            enableDrag: false,
-            onClosing: () {},
-            builder: (context) {
-              return Container(
-                height: 50.0,
-                margin: EdgeInsets.symmetric(horizontal: 2.0),
-                padding: EdgeInsets.symmetric(horizontal: 7.0),
-                decoration: BoxDecoration(
-                    border: Border.all(color: Colors.blue, width: 2.0),
-                    borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(20.0),
-                        topLeft: Radius.circular(20.0))),
-                child: Row(
-                  children: <Widget>[
-                    CurrentSongTitle(),
-                    VerticalDivider(
-                      thickness: 3.0,
+          child: _isExpanded
+              ? Container(
+                  height: double.maxFinite,
+                  width: double.maxFinite,
+                  child: IconButton(
+                    icon: Icon(Icons.keyboard_arrow_down),
+                    onPressed: () {
+                      setState(() {
+                        _isExpanded = false;
+                      });
+                    },
+                  ),
+                )
+              : Container(
+                  decoration: BoxDecoration(
+                    border: Border(
+                      top: BorderSide(width: 1.5, color: Colors.blueAccent),
                     ),
-                    PlayerControls(),
-                  ],
+                  ),
+                  height: 50.0,
+                  margin: EdgeInsets.symmetric(horizontal: 2.0),
+                  padding: EdgeInsets.symmetric(horizontal: 7.0),
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        _isExpanded = true;
+                      });
+                    },
+                    child: Row(
+                      children: <Widget>[
+                        CurrentSongTitle(),
+                        VerticalDivider(
+                          thickness: 3.0,
+                        ),
+                        PlayerControls(),
+                      ],
+                    ),
+                  ),
                 ),
-              );
-            },
-          ),
         );
       },
     );

@@ -1,8 +1,10 @@
-List<Map<String, dynamic>> subredditsList = [
-  {
-    "title": "Classical music",
-    "asset": "assets/images/classical-music.jpg",
-    "subreddits": [
+import 'package:redditify/models/genre.dart';
+
+List<Genre> subredditsList = [
+  Genre(
+    title: "Classical music",
+    asset: "assets/images/classical-music.jpg",
+    subreddits: [
       "composer",
       "baroque",
       "classicalmusic",
@@ -16,12 +18,12 @@ List<Map<String, dynamic>> subredditsList = [
       "icm",
       "Opera",
       "orchestra"
-    ]
-  },
-  {
-    "title": "Electronic music",
-    "asset": "assets/images/electronic-music.jpg",
-    "subreddits": [
+    ],
+  ),
+  Genre(
+    title: "Electronic music",
+    asset: "assets/images/electronic-music.jpg",
+    subreddits: [
       "acidhouse",
       "ambientmusic",
       "AStateOfTrance",
@@ -104,12 +106,12 @@ List<Map<String, dynamic>> subredditsList = [
       "ukfunky",
       "witchhouse",
       "wuuB"
-    ]
-  },
-  {
-    "title": "Rock/Metal",
-    "asset": "assets/images/rock-music.jpg",
-    "subreddits": [
+    ],
+  ),
+  Genre(
+    title: "Rock/Metal",
+    asset: "assets/images/rock-music.jpg",
+    subreddits: [
       "80sHardcorePunk",
       "90sAlternative",
       "90sPunk",
@@ -190,12 +192,12 @@ List<Map<String, dynamic>> subredditsList = [
       "Truemetal",
       "OutlawCountry",
       "WomenRock"
-    ]
-  },
-  {
-    "title": "Hip-Hop",
-    "asset": "assets/images/hip-hop-music.jpg",
-    "subreddits": [
+    ],
+  ),
+  Genre(
+    title: "Hip-Hop",
+    asset: "assets/images/hip-hop-music.jpg",
+    subreddits: [
       "80sHipHop",
       "90sHipHop",
       "altrap",
@@ -221,12 +223,12 @@ List<Map<String, dynamic>> subredditsList = [
       "ukhiphopheads",
       "undergroundchicago",
       "LofiHipHop"
-    ]
-  },
-  {
-    "title": "Decades",
-    "asset": "assets/images/decades-music.jpg",
-    "subreddits": [
+    ],
+  ),
+  Genre(
+    title: "Decades",
+    asset: "assets/images/decades-music.jpg",
+    subreddits: [
       "2010smusic",
       "2000smusic",
       "90sMusic",
@@ -235,12 +237,12 @@ List<Map<String, dynamic>> subredditsList = [
       "70sMusic",
       "60sMusic",
       "50sMusic"
-    ]
-  },
-  {
-    "title": "By country/culture",
-    "asset": "assets/images/world-music.jpg",
-    "subreddits": [
+    ],
+  ),
+  Genre(
+    title: "By country/culture",
+    asset: "assets/images/world-music.jpg",
+    subreddits: [
       "AfricanMusic",
       "afrobeat",
       "balkanbrass",
@@ -259,12 +261,12 @@ List<Map<String, dynamic>> subredditsList = [
       "somluso ",
       "UKbands",
       "WorldMusic"
-    ]
-  },
-  {
-    "title": "Other",
-    "asset": "assets/images/other-music.jpg",
-    "subreddits": [
+    ],
+  ),
+  Genre(
+    title: "Other",
+    asset: "assets/images/other-music.jpg",
+    subreddits: [
       "70s",
       "Acappella",
       "AcousticCovers",
@@ -337,6 +339,6 @@ List<Map<String, dynamic>> subredditsList = [
       "vaporwave",
       "VintageObscura ",
       "vocaloid"
-    ]
-  }
+    ],
+  )
 ];

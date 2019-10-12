@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:redditify/models/genre.dart';
 import 'package:redditify/presenters/subreddits/subreddit_genre_card.dart';
 import 'package:redditify/states/subreddits_state.dart';
 
@@ -13,7 +14,7 @@ class SubredditGenresGrid extends StatelessWidget {
           crossAxisSpacing: 5.0,
           mainAxisSpacing: 5.0,
           children: <Widget>[
-            for (Map<String, dynamic> genre in state.subreddits)
+            for (Genre genre in state.subreddits)
               Card(
                 child: SubredditGenreCard(
                   genre: genre,

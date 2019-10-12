@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:redditify/presenters/player/player_bottom_sheet.dart';
+import 'package:redditify/presenters/subreddits/subreddit_genre_page.dart';
 import 'package:redditify/presenters/subreddits/subreddit_genres_grid.dart';
+import 'package:redditify/states/global_state.dart';
 
 class GlobalPage extends StatelessWidget {
   @override
@@ -9,7 +12,17 @@ class GlobalPage extends StatelessWidget {
       body: Container(
         height: double.maxFinite,
         width: double.maxFinite,
-        child: SubredditGenresGrid(),
+        child: Consumer<GlobalState>(
+          builder: (context, state, _) {
+            return IndexedStack(
+              index: state.visibleIndex,
+              children: <Widget>[
+                SubredditGenresGrid(),
+                SubredditGenrePage(),
+              ],
+            );
+          },
+        ),
       ),
       bottomSheet: PlayerBottomSheet(),
       bottomNavigationBar: BottomNavigationBar(

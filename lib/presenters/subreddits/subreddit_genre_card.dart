@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:redditify/models/genre.dart';
-import 'package:redditify/pages/subreddit_page.dart';
+import 'package:redditify/states/global_state.dart';
 
 class SubredditGenreCard extends StatelessWidget {
   final Genre genre;
@@ -11,8 +12,7 @@ class SubredditGenreCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => SubredditPage()));
+        Provider.of<GlobalState>(context).selectGenre(genre);
       },
       child: Container(
         decoration: BoxDecoration(

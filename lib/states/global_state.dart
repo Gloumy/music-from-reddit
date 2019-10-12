@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:redditify/models/genre.dart';
 import 'package:redditify/models/post.dart';
 import 'package:redditify/states/player_state.dart';
 import 'package:redditify/states/posts_state.dart';
@@ -8,10 +9,12 @@ class GlobalState with ChangeNotifier {
   PostsState _postsState;
   SubredditsState _subredditsState;
   PlayerState _playerState;
+  int _visibleIndex = 0;
 
   PostsState get postsState => _postsState;
   SubredditsState get subredditsState => _subredditsState;
   PlayerState get playerState => _playerState;
+  int get visibleIndex => _visibleIndex;
 
   GlobalState() {
     _initializeStates();
@@ -41,5 +44,16 @@ class GlobalState with ChangeNotifier {
 
   void stopAudio() async {
     _playerState.stopAudio();
+  }
+
+  void setVisibleIndex(int index) {
+    _visibleIndex = index;
+    notifyListeners();
+  }
+
+  void selectGenre(Genre genre) {
+    _subredditsState.selectGenre(genre);
+    setVisibleIndex(1);
+    notifyListeners();
   }
 }

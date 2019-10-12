@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:redditify/pages/global_page.dart';
 import 'package:redditify/pages/home_page.dart';
 import 'package:redditify/states/global_state.dart';
 import 'package:redditify/states/player_state.dart';
@@ -39,7 +40,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: HomePage(),
+        home: GlobalPage(),
       ),
     );
   }

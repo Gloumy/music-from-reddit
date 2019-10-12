@@ -9,7 +9,7 @@ class CurrentSongTitle extends StatelessWidget {
       builder: (context, state, _) {
         return Expanded(
           flex: 8,
-          child: Text(state.currentSongTitle),
+          child: Text(state.currentSongTitle ?? "No current song.", textAlign: TextAlign.center,),
         );
       },
     );

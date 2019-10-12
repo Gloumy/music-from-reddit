@@ -10,53 +10,32 @@ class PlayerBottomSheet extends StatefulWidget {
 }
 
 class _PlayerBottomSheetState extends State<PlayerBottomSheet> {
-  bool _isExpanded = false;
-
   @override
   Widget build(BuildContext context) {
     return Consumer<PlayerState>(
       builder: (context, state, _) {
         return Visibility(
           visible: state.isPlaying,
-          child: _isExpanded
-              ? Container(
-                  height: double.maxFinite,
-                  width: double.maxFinite,
-                  child: IconButton(
-                    icon: Icon(Icons.keyboard_arrow_down),
-                    onPressed: () {
-                      setState(() {
-                        _isExpanded = false;
-                      });
-                    },
-                  ),
-                )
-              : Container(
-                  decoration: BoxDecoration(
-                    border: Border(
-                      top: BorderSide(width: 1.5, color: Colors.blueAccent),
-                    ),
-                  ),
-                  height: 50.0,
-                  margin: EdgeInsets.symmetric(horizontal: 2.0),
-                  padding: EdgeInsets.symmetric(horizontal: 7.0),
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        _isExpanded = true;
-                      });
-                    },
-                    child: Row(
-                      children: <Widget>[
-                        CurrentSongTitle(),
-                        VerticalDivider(
-                          thickness: 3.0,
-                        ),
-                        PlayerControls(),
-                      ],
-                    ),
-                  ),
+          child: Container(
+            decoration: BoxDecoration(
+              border: Border(
+                top: BorderSide(width: 0.5, color: Colors.blueGrey),
+                bottom: BorderSide(width: 0.3, color: Colors.blueGrey),
+              ),
+            ),
+            height: 50.0,
+            margin: EdgeInsets.symmetric(horizontal: 2.0),
+            padding: EdgeInsets.symmetric(horizontal: 7.0),
+            child: Row(
+              children: <Widget>[
+                CurrentSongTitle(),
+                VerticalDivider(
+                  thickness: 3.0,
                 ),
+                PlayerControls(),
+              ],
+            ),
+          ),
         );
       },
     );

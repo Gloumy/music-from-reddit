@@ -1,6 +1,7 @@
 List<Map<String, dynamic>> subredditsList = [
   {
     "title": "Classical music",
+    "asset": "assets/images/classical-music.jpg",
     "subreddits": [
       "composer",
       "baroque",
@@ -19,6 +20,7 @@ List<Map<String, dynamic>> subredditsList = [
   },
   {
     "title": "Electronic music",
+    "asset": "assets/images/electronic-music.jpg",
     "subreddits": [
       "acidhouse",
       "ambientmusic",
@@ -106,6 +108,7 @@ List<Map<String, dynamic>> subredditsList = [
   },
   {
     "title": "Rock/Metal",
+    "asset": "assets/images/rock-music.jpg",
     "subreddits": [
       "80sHardcorePunk",
       "90sAlternative",
@@ -191,6 +194,7 @@ List<Map<String, dynamic>> subredditsList = [
   },
   {
     "title": "Hip-Hop",
+    "asset": "assets/images/hip-hop-music.jpg",
     "subreddits": [
       "80sHipHop",
       "90sHipHop",
@@ -220,7 +224,8 @@ List<Map<String, dynamic>> subredditsList = [
     ]
   },
   {
-    "title": "Some decades",
+    "title": "Decades",
+    "asset": "assets/images/decades-music.jpg",
     "subreddits": [
       "2010smusic",
       "2000smusic",
@@ -233,7 +238,8 @@ List<Map<String, dynamic>> subredditsList = [
     ]
   },
   {
-    "title": "By country/region/culture",
+    "title": "By country/culture",
+    "asset": "assets/images/world-music.jpg",
     "subreddits": [
       "AfricanMusic",
       "afrobeat",
@@ -257,6 +263,7 @@ List<Map<String, dynamic>> subredditsList = [
   },
   {
     "title": "Other",
+    "asset": "assets/images/other-music.jpg",
     "subreddits": [
       "70s",
       "Acappella",

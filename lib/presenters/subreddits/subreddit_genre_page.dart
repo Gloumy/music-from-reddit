@@ -1,42 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:redditify/presenters/subreddits/subreddit_genre_header.dart';
+import 'package:redditify/presenters/subreddits/subreddit_selection_button.dart';
+import 'package:redditify/presenters/visibility/back_home_button.dart';
 import 'package:redditify/states/subreddits_state.dart';
 
 class SubredditGenrePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: <Widget>[
-        Consumer<SubredditsState>(
-          builder: (context, state, _) {
-            return Container(
-                height: 150,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage(state.selectedGenre?.asset),
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                child: Center(
-                  child: Text(
-                    state.selectedGenre?.title,
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      shadows: [
-                        Shadow(
-                          offset: Offset(0.0, 0.0),
-                          blurRadius: 5.0,
-                          color: Color.fromARGB(255, 0, 0, 0),
-                        ),
+    return SafeArea(
+      child: Container(
+        child: Column(
+          children: <Widget>[
+            Stack(
+              children: <Widget>[
+                SubredditGenreHeader(),
+                BackHomeButton(),
+              ],
+            ),
+            Consumer<SubredditsState>(
+              builder: (context, state, _) {
+                return Expanded(
+                  child: ListView(children: [
+                    Wrap(
+                      alignment: WrapAlignment.center,
+                      spacing: 3.0,
+                      children: <Widget>[
+                        for (String subreddit in state.selectedGenre.subreddits)
+                          SubredditSelectionButton(
+                            subreddit: subreddit,
+                            isSelected: state.selectedSubreddit == subreddit,
+                          )
                       ],
-                      color: Colors.white,
                     ),
-                  ),
-                ));
-          },
+                  ]),
+                );
+              },
+            )
+          ],
         ),
-      ],
+      ),
     );
   }
 }

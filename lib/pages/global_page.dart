@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:redditify/pages/subreddit_page.dart';
 import 'package:redditify/presenters/player/player_bottom_sheet.dart';
 import 'package:redditify/presenters/subreddits/subreddit_genre_page.dart';
 import 'package:redditify/presenters/subreddits/subreddit_genres_grid.dart';
@@ -19,6 +20,7 @@ class GlobalPage extends StatelessWidget {
               children: <Widget>[
                 SubredditGenresGrid(),
                 SubredditGenrePage(),
+                SubredditPage(),
               ],
             );
           },

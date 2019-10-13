@@ -11,7 +11,7 @@ class BackHomeButton extends StatelessWidget {
         color: Colors.white,
       ),
       onPressed: () {
-        Provider.of<GlobalState>(context).setVisibleIndex(0);
+        Provider.of<GlobalState>(context).goBack();
       },
     );
   }

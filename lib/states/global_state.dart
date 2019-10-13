@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:redditify/models/genre.dart';
 import 'package:redditify/models/post.dart';
+import 'package:redditify/models/visible_item.dart';
 import 'package:redditify/states/player_state.dart';
 import 'package:redditify/states/posts_state.dart';
 import 'package:redditify/states/subreddits_state.dart';
@@ -10,11 +11,13 @@ class GlobalState with ChangeNotifier {
   SubredditsState _subredditsState;
   PlayerState _playerState;
   int _visibleIndex = 0;
+  int _previousIndex;
 
   PostsState get postsState => _postsState;
   SubredditsState get subredditsState => _subredditsState;
   PlayerState get playerState => _playerState;
   int get visibleIndex => _visibleIndex;
+  int get previousIndex => _previousIndex;
 
   GlobalState() {
     _initializeStates();
@@ -29,7 +32,7 @@ class GlobalState with ChangeNotifier {
   void selectSubreddit(String subreddit, {String sortBy = "new"}) {
     _subredditsState.selectSubreddit(subreddit, sortBy);
     _postsState.retrievePosts(subreddit, sortBy);
-    _visibleIndex = 2;
+    setVisibleIndex(VisibleItem.SubredditPage);
     notifyListeners();
   }
 
@@ -47,14 +50,20 @@ class GlobalState with ChangeNotifier {
     _playerState.stopAudio();
   }
 
-  void setVisibleIndex(int index) {
-    _visibleIndex = index;
+  void setVisibleIndex(VisibleItem item) {
+    _previousIndex = _visibleIndex;
+    _visibleIndex = item.index;
+    notifyListeners();
+  }
+
+  void goBack() {
+    _visibleIndex = _previousIndex;
     notifyListeners();
   }
 
   void selectGenre(Genre genre) {
     _subredditsState.selectGenre(genre);
-    setVisibleIndex(1);
+    setVisibleIndex(VisibleItem.SubredditGenrePage);
     notifyListeners();
   }
 }

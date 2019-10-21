@@ -1,16 +1,29 @@
-# redditify
+# Music From Reddit
 
-Get music from subreddits
+Listen to music from a large list of music subreddits
 
-## Getting Started
+## How to run
 
-This project is a starting point for a Flutter application.
+No additional configuration should be required, juste use `flutter run` or launch it via your IDE on an emulator or physical device.
 
-A few resources to get you started if this is your first Flutter project:
+## How does it work ?
+1. Select your genre and then the subreddit you want to load from (Subreddits list copied from [r/music wiki](https://www.reddit.com/r/Music/wiki/musicsubreddits))
+2. The threads are loaded as a json simply via the r/subreddit.json url and filtered if the post have a youtube link
+3. The youtube id is passed to the plugin YoutubeExtractor to get the audio stream url
+4. The audio stream is played with AudioPlayers plugin
+5. The user can enjoy a selection of music content curated by fellow redditors !
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Current features
+- [x] Retrieve content from subreddits
+- [x] Play a single song (may not keep this one)
+- [x] Play a list of songs 
+- [x] Basic player controls (play/pause/stop/previous/next)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Intended future features
+- [ ] Select a random subreddit
+- [ ] Random play
+- [ ] Combine multiple subreddits
+- [ ] A proper and clean UI
+- [ ] A LOT of miscellaneous improvements
+
+** Feel free to add constructive feedback and issues ! I'll try to keep working on it on my (somewhat limited) free time, and any help/contribution/ideas are very welcome !**

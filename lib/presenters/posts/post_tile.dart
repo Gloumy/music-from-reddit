@@ -11,6 +11,7 @@ class PostTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      elevation: 3.0,
       color: darkGreyColor,
       child: Row(
         children: <Widget>[

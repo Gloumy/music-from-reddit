@@ -13,6 +13,7 @@ class SubredditGenresGrid extends StatelessWidget {
           crossAxisCount: 2,
           crossAxisSpacing: 5.0,
           mainAxisSpacing: 5.0,
+          padding: EdgeInsets.all(5.0),
           children: <Widget>[
             for (Genre genre in state.subreddits)
               Card(

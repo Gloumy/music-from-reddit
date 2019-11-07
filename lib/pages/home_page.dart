@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:redditify/presenters/subreddits/subreddits_list.dart';
+import 'package:redditify/presenters/subreddits/subreddit_genres_grid.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -8,21 +8,9 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Image.asset("assets/images/logo.png"),
         centerTitle: true,
+        elevation: 5.0,
       ),
+      body: SubredditGenresGrid(),
     );
-    // return Scaffold(
-    //   appBar: AppBar(
-    //     title: Text("Music From Reddit"),
-    //     centerTitle: true,
-    //   ),
-    //   body: Container(
-    //     margin: EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
-    //     child: Column(
-    //       children: <Widget>[
-    //         SubredditsList(),
-    //       ],
-    //     ),
-    //   ),
-    // );
   }
 }

@@ -18,13 +18,13 @@ class SubredditPage extends StatelessWidget {
                 GoBackButton(),
                 Positioned(
                   child: PlayerButtonVisibility(),
-                  bottom: -20,
+                  bottom: -10,
                   right: 20,
                 ),
               ],
             ),
             SizedBox(
-              height: 22.0,
+              height: 12.0,
             ),
             PostsList(),
           ],

@@ -6,17 +6,23 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Music From Reddit"),
+        title: Image.asset("assets/images/logo.png"),
         centerTitle: true,
       ),
-      body: Container(
-        margin: EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
-        child: Column(
-          children: <Widget>[
-            SubredditsList(),
-          ],
-        ),
-      ),
     );
+    // return Scaffold(
+    //   appBar: AppBar(
+    //     title: Text("Music From Reddit"),
+    //     centerTitle: true,
+    //   ),
+    //   body: Container(
+    //     margin: EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
+    //     child: Column(
+    //       children: <Widget>[
+    //         SubredditsList(),
+    //       ],
+    //     ),
+    //   ),
+    // );
   }
 }

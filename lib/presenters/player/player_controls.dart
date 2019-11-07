@@ -2,6 +2,7 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:redditify/states/player_state.dart';
+import 'package:redditify/utils/colors.dart';
 
 class PlayerControls extends StatelessWidget {
   @override
@@ -9,35 +10,43 @@ class PlayerControls extends StatelessWidget {
     return Consumer<PlayerState>(
       builder: (context, state, _) {
         return Expanded(
-          flex: 3,
+          flex: 4,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
               GestureDetector(
                 child: Icon(
                   Icons.skip_previous,
-                  color: state.canPlayPrevious ? null : Colors.grey,
+                  color: state.canPlayPrevious ? blueColor : mediumGreyColor,
                 ),
                 onTap: () => state.playPreviousSong(),
               ),
-              if (state.audioPlayerState == AudioPlayerState.PAUSED)
+              if (state.audioPlayerState == AudioPlayerState.PAUSED ||
+                  !state.isPlaying)
                 GestureDetector(
-                  child: Icon(Icons.play_arrow),
+                  child: Icon(
+                    Icons.play_arrow,
+                    color: state.isPlaying ? blueColor : mediumGreyColor,
+                  ),
                   onTap: () => state.resumeAudio(),
                 ),
               if (state.audioPlayerState == AudioPlayerState.PLAYING)
                 GestureDetector(
-                  child: Icon(Icons.pause_circle_outline),
+                  child: Icon(
+                    Icons.pause_circle_outline,
+                    color: blueColor,
+                  ),
                   onTap: () => state.pauseAudio(),
                 ),
               GestureDetector(
-                child: Icon(Icons.stop),
+                child: Icon(Icons.stop,
+                    color: state.isPlaying ? blueColor : mediumGreyColor),
                 onTap: () => state.stopAudio(),
               ),
               GestureDetector(
                 child: Icon(
                   Icons.skip_next,
-                  color: state.canPlayNext ? null : Colors.grey,
+                  color: state.canPlayNext ? blueColor : mediumGreyColor,
                 ),
                 onTap: () => state.playNextSong(),
               ),

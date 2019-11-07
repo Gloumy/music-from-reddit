@@ -66,7 +66,7 @@ class PlayerState with ChangeNotifier {
     _playAudioService.audioPlayer.stop();
     _currentSongIndex = 0;
     _playlist = [];
-    _currentSongTitle = "";
+    _currentSongTitle = null;
     _isPlaying = false;
     notifyListeners();
   }

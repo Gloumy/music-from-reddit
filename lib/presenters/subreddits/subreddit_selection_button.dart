@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:redditify/states/global_state.dart';
+import 'package:redditify/utils/colors.dart';
 
 class SubredditSelectionButton extends StatelessWidget {
   final String subreddit;
@@ -18,11 +19,14 @@ class SubredditSelectionButton extends StatelessWidget {
       margin: EdgeInsetsDirectional.only(bottom: 3),
       child: RaisedButton(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(35)),
-        child: Text("r/$subreddit"),
+        child: Text(
+          "r/$subreddit",
+          style: TextStyle(color: lightGreyColor),
+        ),
         onPressed: () {
           Provider.of<GlobalState>(context).selectSubreddit(subreddit);
         },
-        color: isSelected ? Colors.blue : null,
+        color: isSelected ? redditOrange : darkGreyColor,
       ),
     );
   }

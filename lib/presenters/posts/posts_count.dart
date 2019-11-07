@@ -7,7 +7,20 @@ class PostsCount extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<PostsState>(
       builder: (context, state, _) {
-        return Text("${state.postsLength} titres");
+        return Text(
+          "${state.postsLength} titres",
+          style: TextStyle(
+            fontSize: 14,
+            shadows: [
+              Shadow(
+                offset: Offset(0.0, 0.0),
+                blurRadius: 5.0,
+                color: Color.fromARGB(255, 0, 0, 0),
+              ),
+            ],
+            color: Colors.white,
+          ),
+        );
       },
     );
   }

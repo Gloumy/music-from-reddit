@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:redditify/pages/global_page.dart';
-import 'package:redditify/pages/home_page.dart';
 import 'package:redditify/states/global_state.dart';
 import 'package:redditify/states/player_state.dart';
 import 'package:redditify/states/posts_state.dart';
@@ -36,7 +35,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Music From Reddit',
         theme: appTheme,
-        home: HomePage(),
+        home: GlobalPage(),
       ),
     );
   }

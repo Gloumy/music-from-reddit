@@ -6,11 +6,9 @@ import 'package:redditify/states/global_state.dart';
 import 'package:redditify/states/player_state.dart';
 import 'package:redditify/states/posts_state.dart';
 import 'package:redditify/states/subreddits_state.dart';
-import 'package:redditify/utils/routes.dart';
 import 'package:redditify/utils/theme.dart';
 
 void main() {
-  Routes.createRoutes();
   runApp(MyApp());
 }
 
@@ -37,8 +35,6 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Music From Reddit',
-        navigatorKey: Routes.sailor.navigatorKey, // important
-        onGenerateRoute: Routes.sailor.generator(),
         theme: appTheme,
         home: HomePage(),
       ),

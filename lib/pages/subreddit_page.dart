@@ -12,12 +12,20 @@ class SubredditPage extends StatelessWidget {
         child: Column(
           children: <Widget>[
             Stack(
+              overflow: Overflow.visible,
               children: <Widget>[
                 SubredditHeader(),
                 GoBackButton(),
+                Positioned(
+                  child: PlayerButtonVisibility(),
+                  bottom: -20,
+                  right: 20,
+                ),
               ],
             ),
-            // PlayerButtonVisibility(),
+            SizedBox(
+              height: 22.0,
+            ),
             PostsList(),
           ],
         ),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:redditify/presenters/subreddits/subreddit_genre_header.dart';
 import 'package:redditify/presenters/subreddits/subreddit_selection_button.dart';
-import 'package:redditify/presenters/visibility/back_home_button.dart';
+import 'package:redditify/presenters/visibility/go_back_button.dart';
 import 'package:redditify/states/subreddits_state.dart';
 
 class SubredditGenrePage extends StatelessWidget {
@@ -15,7 +15,7 @@ class SubredditGenrePage extends StatelessWidget {
             Stack(
               children: <Widget>[
                 SubredditGenreHeader(),
-                BackHomeButton(),
+                GoBackButton(),
               ],
             ),
             Consumer<SubredditsState>(

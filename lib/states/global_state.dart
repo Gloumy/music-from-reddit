@@ -11,13 +11,11 @@ class GlobalState with ChangeNotifier {
   SubredditsState _subredditsState;
   PlayerState _playerState;
   int _visibleIndex = 0;
-  int _previousIndex;
 
   PostsState get postsState => _postsState;
   SubredditsState get subredditsState => _subredditsState;
   PlayerState get playerState => _playerState;
   int get visibleIndex => _visibleIndex;
-  int get previousIndex => _previousIndex;
 
   GlobalState() {
     _initializeStates();
@@ -51,13 +49,12 @@ class GlobalState with ChangeNotifier {
   }
 
   void setVisibleIndex(VisibleItem item) {
-    _previousIndex = _visibleIndex;
     _visibleIndex = item.index;
     notifyListeners();
   }
 
   void goBack() {
-    _visibleIndex = _previousIndex;
+    _visibleIndex--;
     notifyListeners();
   }
 

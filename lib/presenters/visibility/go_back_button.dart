@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:redditify/states/global_state.dart';
 
-class BackHomeButton extends StatelessWidget {
+class GoBackButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(

@@ -4,6 +4,7 @@ import 'package:redditify/presenters/posts/posts_count.dart';
 import 'package:redditify/presenters/posts/posts_list.dart';
 import 'package:redditify/presenters/subreddits/subreddit_header.dart';
 import 'package:redditify/presenters/subreddits/subreddit_sort_wrap.dart';
+import 'package:redditify/presenters/visibility/go_back_button.dart';
 
 class SubredditPage extends StatelessWidget {
   @override
@@ -12,7 +13,12 @@ class SubredditPage extends StatelessWidget {
       child: Container(
         child: Column(
           children: <Widget>[
-            SubredditHeader(),
+            Stack(
+              children: <Widget>[
+                SubredditHeader(),
+                GoBackButton(),
+              ],
+            ),
             SubredditSortWrap(),
             PlayerButtonVisibility(),
             PostsCount(),

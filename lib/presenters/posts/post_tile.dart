@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:redditify/models/post.dart';
 import 'package:redditify/presenters/posts/play_single_post_button.dart';
+import 'package:redditify/utils/colors.dart';
 
 class PostTile extends StatelessWidget {
   final Post post;
@@ -10,6 +11,7 @@ class PostTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: darkGreyColor,
       child: Row(
         children: <Widget>[
           Expanded(
@@ -21,7 +23,10 @@ class PostTile extends StatelessWidget {
           ),
           Expanded(
             flex: 4,
-            child: Text(post.title),
+            child: Text(
+              post.title,
+              style: TextStyle(color: lightGreyColor),
+            ),
           ),
           PlaySinglePostButton(
             url: post.url,

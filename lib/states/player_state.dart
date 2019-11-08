@@ -80,6 +80,8 @@ class PlayerState with ChangeNotifier {
     _currentSongIndex = 0;
     _playlist = [];
     _currentSongTitle = null;
+    _currentSongMaxDuration = null;
+    _currentSongPosition = null;
     _isPlaying = false;
     notifyListeners();
   }

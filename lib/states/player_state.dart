@@ -116,4 +116,11 @@ class PlayerState with ChangeNotifier {
     _playlistName = name;
     notifyListeners();
   }
+
+  Future<void> jumpToSong(int index) async {
+    _currentSongIndex = index;
+    _currentSongTitle = _playlist[_currentSongIndex].title;
+    notifyListeners();
+    _playAudioService.playAudio(_playlist[_currentSongIndex].url);
+  }
 }

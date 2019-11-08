@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:redditify/presenters/player/songs_list.dart';
 import 'package:redditify/utils/colors.dart';
 import 'package:redditify/widgets/collapsed_player.dart';
 
@@ -11,10 +12,17 @@ class PlaylistPanel extends StatelessWidget {
       ),
       child: Column(
         children: <Widget>[
-          Expanded(
-            child: Container(),
+          // Filler container to save some space for drag down
+          Container(
+            height: 15.0,
           ),
-          Container(child: CollapsedPlayer(), height: 75.0,),
+          Expanded(
+            child: SongsList(),
+          ),
+          Container(
+            child: CollapsedPlayer(),
+            height: 75.0,
+          ),
         ],
       ),
     );

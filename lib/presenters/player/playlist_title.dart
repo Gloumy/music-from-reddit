@@ -8,7 +8,7 @@ class PlaylistTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<PlayerState>(
       builder: (context, state, _) => Text(
-        "r/${state.playlistName}",
+        state.playlistName != null ? "r/${state.playlistName}" : "No current playlist",
         style: TextStyle(
           color: redditOrange,
           fontWeight: FontWeight.bold,

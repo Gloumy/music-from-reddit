@@ -10,10 +10,13 @@ class CurrentSongTitle extends StatelessWidget {
       builder: (context, state, _) {
         return Expanded(
           flex: 8,
-          child: Text(
-            state.currentSongTitle ?? "No current song playing.",
-            textAlign: TextAlign.center,
-            style: TextStyle(color: lightGreyColor),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              state.currentSongTitle ?? "No current song playing.",
+              textAlign: TextAlign.center,
+              style: TextStyle(color: lightGreyColor),
+            ),
           ),
         );
       },

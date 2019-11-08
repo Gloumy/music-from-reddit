@@ -6,6 +6,7 @@ import 'package:redditify/presenters/subreddits/subreddit_genre_page.dart';
 import 'package:redditify/states/global_state.dart';
 import 'package:redditify/utils/colors.dart';
 import 'package:redditify/widgets/collapsed_player.dart';
+import 'package:redditify/widgets/playlist_panel.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class GlobalPage extends StatelessWidget {
@@ -31,9 +32,7 @@ class GlobalPage extends StatelessWidget {
           ),
           padding: EdgeInsets.only(bottom: 75),
         ),
-        panel: Container(
-          color: darkGreyColor,
-        ),
+        panel: PlaylistPanel(),
         collapsed: CollapsedPlayer(),
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:redditify/presenters/player/current_song_title.dart';
 import 'package:redditify/presenters/player/player_controls.dart';
+import 'package:redditify/presenters/player/song_progression_bar.dart';
 import 'package:redditify/utils/colors.dart';
 
 class CollapsedPlayer extends StatelessWidget {
@@ -8,16 +9,23 @@ class CollapsedPlayer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          color: darkGreyColor,
-          border: Border(top: BorderSide(color: mediumGreyColor, width: 3.0))),
-      child: Row(
+        color: darkGreyColor,
+      ),
+      child: Column(
         children: <Widget>[
-          CurrentSongTitle(),
-          VerticalDivider(
-            color: mediumGreyColor,
-            thickness: 3.0,
+          SongProgressionBar(),
+          Expanded(
+            child: Row(
+              children: <Widget>[
+                CurrentSongTitle(),
+                VerticalDivider(
+                  color: mediumGreyColor,
+                  thickness: 3.0,
+                ),
+                PlayerControls(),
+              ],
+            ),
           ),
-          PlayerControls(),
         ],
       ),
     );

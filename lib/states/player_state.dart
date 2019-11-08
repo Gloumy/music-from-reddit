@@ -11,6 +11,8 @@ class PlayerState with ChangeNotifier {
   int _currentSongIndex;
   AudioPlayerState _audioPlayerState;
   String _currentSongTitle;
+  Duration _currentSongMaxDuration;
+  Duration _currentSongPosition;
 
   PlayAudioService get playAudioService => _playAudioService;
   bool get isPlaying => _isPlaying;
@@ -19,6 +21,8 @@ class PlayerState with ChangeNotifier {
   int get currentSongIndex => _currentSongIndex;
   AudioPlayerState get audioPlayerState => _audioPlayerState;
   String get currentSongTitle => _currentSongTitle;
+  Duration get currentSongMaxDuration => _currentSongMaxDuration;
+  Duration get currentSongPosition => _currentSongPosition;
 
   bool get canPlayPrevious => _playlist.isNotEmpty && _currentSongIndex > 0;
   bool get canPlayNext =>
@@ -28,6 +32,15 @@ class PlayerState with ChangeNotifier {
     _playAudioService.audioPlayer.onPlayerStateChanged
         .listen((AudioPlayerState state) {
       _audioPlayerState = state;
+      notifyListeners();
+    });
+    _playAudioService.audioPlayer.onDurationChanged.listen((Duration duration) {
+      _currentSongMaxDuration = duration;
+      notifyListeners();
+    });
+    _playAudioService.audioPlayer.onAudioPositionChanged
+        .listen((Duration position) {
+      _currentSongPosition = position;
       notifyListeners();
     });
   }

@@ -9,12 +9,12 @@ import 'package:redditify/states/subreddits_state.dart';
 class GlobalState with ChangeNotifier {
   PostsState _postsState;
   SubredditsState _subredditsState;
-  PlayerState _playerState;
+  MyPlayerState _playerState;
   int _visibleIndex = 0;
 
   PostsState get postsState => _postsState;
   SubredditsState get subredditsState => _subredditsState;
-  PlayerState get playerState => _playerState;
+  MyPlayerState get playerState => _playerState;
   int get visibleIndex => _visibleIndex;
 
   GlobalState() {
@@ -24,7 +24,7 @@ class GlobalState with ChangeNotifier {
   void _initializeStates() {
     _postsState = PostsState();
     _subredditsState = SubredditsState();
-    _playerState = PlayerState();
+    _playerState = MyPlayerState();
   }
 
   void selectSubreddit(String subreddit, {String sortBy = "new"}) {

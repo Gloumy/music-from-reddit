@@ -7,7 +7,7 @@ import 'package:redditify/widgets/song_tile.dart';
 class SongsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Consumer<PlayerState>(
+    return Consumer<MyPlayerState>(
       builder: (context, state, _) {
         return ListView.separated(
           separatorBuilder: (context, index) => Divider(

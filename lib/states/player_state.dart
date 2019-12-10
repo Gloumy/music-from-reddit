@@ -1,15 +1,15 @@
-import 'package:audioplayers/audioplayers.dart';
+import 'package:flutter_exoplayer/audioplayer.dart';
 import 'package:flutter/foundation.dart';
 import 'package:redditify/models/post.dart';
 import 'package:redditify/services/play_audio_service.dart';
 
-class PlayerState with ChangeNotifier {
+class MyPlayerState with ChangeNotifier {
   final PlayAudioService _playAudioService = PlayAudioService();
   bool _isPlaying = false;
   List<Post> _playlist = [];
   String _playlistName;
   int _currentSongIndex;
-  AudioPlayerState _audioPlayerState;
+  PlayerState _audioPlayerState;
   String _currentSongTitle;
   Duration _currentSongMaxDuration;
   Duration _currentSongPosition;
@@ -19,7 +19,7 @@ class PlayerState with ChangeNotifier {
   List<Post> get playlist => List.from(_playlist);
   String get playlistName => _playlistName;
   int get currentSongIndex => _currentSongIndex;
-  AudioPlayerState get audioPlayerState => _audioPlayerState;
+  PlayerState get audioPlayerState => _audioPlayerState;
   String get currentSongTitle => _currentSongTitle;
   Duration get currentSongMaxDuration => _currentSongMaxDuration;
   Duration get currentSongPosition => _currentSongPosition;
@@ -28,9 +28,9 @@ class PlayerState with ChangeNotifier {
   bool get canPlayNext =>
       _playlist.isNotEmpty && _currentSongIndex < _playlist.length;
 
-  PlayerState() {
+  MyPlayerState() {
     _playAudioService.audioPlayer.onPlayerStateChanged
-        .listen((AudioPlayerState state) {
+        .listen((PlayerState state) {
       _audioPlayerState = state;
       notifyListeners();
     });
@@ -63,15 +63,15 @@ class PlayerState with ChangeNotifier {
     notifyListeners();
     _playAudioService.audioPlayer.onPlayerCompletion.listen((event) {
       if (canPlayNext) {
-        try {
+      try {
           playNextSong();
-        } catch (e) {
+      } catch (e) {
           print("unable to load song");
           playNextSong();
-        }
+      }
       } else {
         stopAudio();
-      }
+    }
     });
   }
 

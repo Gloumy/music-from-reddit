@@ -1,4 +1,4 @@
-import 'package:audioplayers/audioplayers.dart';
+import 'package:flutter_exoplayer/audioplayer.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:redditify/states/player_state.dart';
@@ -7,7 +7,7 @@ import 'package:redditify/utils/colors.dart';
 class PlayerControls extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Consumer<PlayerState>(
+    return Consumer<MyPlayerState>(
       builder: (context, state, _) {
         return Expanded(
           flex: 4,
@@ -21,7 +21,7 @@ class PlayerControls extends StatelessWidget {
                 ),
                 onTap: () => state.playPreviousSong(),
               ),
-              if (state.audioPlayerState == AudioPlayerState.PAUSED ||
+              if (state.audioPlayerState == PlayerState.PAUSED ||
                   !state.isPlaying)
                 GestureDetector(
                   child: Icon(
@@ -30,7 +30,7 @@ class PlayerControls extends StatelessWidget {
                   ),
                   onTap: () => state.resumeAudio(),
                 ),
-              if (state.audioPlayerState == AudioPlayerState.PLAYING)
+              if (state.audioPlayerState == PlayerState.PLAYING)
                 GestureDetector(
                   child: Icon(
                     Icons.pause_circle_outline,

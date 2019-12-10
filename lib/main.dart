@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<PostsState>.value(
           value: _globalState.postsState,
         ),
-        ChangeNotifierProvider<PlayerState>.value(
+        ChangeNotifierProvider<MyPlayerState>.value(
           value: _globalState.playerState,
         ),
       ],

@@ -19,7 +19,7 @@ class SongTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Provider.of<PlayerState>(context).jumpToSong(index),
+      onTap: () => Provider.of<MyPlayerState>(context).jumpToSong(index),
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: 6.0, vertical: 1.0),
         child: Text(

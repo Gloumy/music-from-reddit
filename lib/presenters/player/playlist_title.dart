@@ -6,7 +6,7 @@ import 'package:redditify/utils/colors.dart';
 class PlaylistTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Consumer<PlayerState>(
+    return Consumer<MyPlayerState>(
       builder: (context, state, _) => Text(
         state.playlistName != null ? "r/${state.playlistName}" : "No current playlist",
         style: TextStyle(

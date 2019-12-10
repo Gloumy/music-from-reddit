@@ -12,7 +12,7 @@ class PlayerBottomSheet extends StatefulWidget {
 class _PlayerBottomSheetState extends State<PlayerBottomSheet> {
   @override
   Widget build(BuildContext context) {
-    return Consumer<PlayerState>(
+    return Consumer<MyPlayerState>(
       builder: (context, state, _) {
         return Visibility(
           visible: state.isPlaying,

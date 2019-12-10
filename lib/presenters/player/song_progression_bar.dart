@@ -6,7 +6,7 @@ import 'package:redditify/utils/colors.dart';
 class SongProgressionBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Consumer<PlayerState>(
+    return Consumer<MyPlayerState>(
       builder: (context, state, _) {
         return LinearProgressIndicator(
             backgroundColor: mediumGreyColor,

@@ -8,7 +8,7 @@ import 'package:redditify/utils/colors.dart';
 class PlayerActionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Consumer<PlayerState>(builder: (context, state, _) {
+    return Consumer<MyPlayerState>(builder: (context, state, _) {
       return FloatingActionButton(
         backgroundColor: blueColor,
         child: state.isPlaying &&

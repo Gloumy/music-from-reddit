@@ -1,4 +1,4 @@
-import 'package:audioplayers/audioplayers.dart';
+import 'package:flutter_exoplayer/audioplayer.dart';
 import 'package:youtube_extractor/youtube_extractor.dart';
 
 class PlayAudioService {

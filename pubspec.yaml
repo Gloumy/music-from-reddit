@@ -27,8 +27,8 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   youtube_extractor: ^1.0.4
-  audioplayers: ^0.13.2
   sliding_up_panel: ^0.3.6
+  flutter_exoplayer: ^0.5.4
 
 dev_dependencies:
   flutter_test:

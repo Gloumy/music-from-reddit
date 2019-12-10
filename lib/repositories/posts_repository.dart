@@ -9,7 +9,13 @@ class PostsRepository {
 
     List<dynamic> responseData = response.data["data"]["children"];
     List<Post> posts = [];
-    responseData.forEach((p) => posts.add(Post.fromJson(p["data"])));
+    RegExp exp = RegExp(
+        r"(?:youtube(?:-nocookie)?\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})");
+
+    // Directly filter posts matching youtube url
+    responseData.forEach((p) {
+      if (exp.hasMatch(p["data"]["url"])) posts.add(Post.fromJson(p["data"]));
+    });
 
     return posts;
   }

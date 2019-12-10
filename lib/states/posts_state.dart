@@ -15,15 +15,7 @@ class PostsState with ChangeNotifier {
     notifyListeners();
 
     _posts = await _postsRepository.retrievePosts(subreddit, sortBy);
-    filterYoutubePosts();
 
     notifyListeners();
-  }
-
-  void filterYoutubePosts() {
-    RegExp exp =
-        RegExp(r"^(http(s)?:\/\/)?((w){3}.)?youtu(be|.be)?(\.com)?\/.+");
-
-    _posts.removeWhere((p) => !exp.hasMatch(p.url));
   }
 }

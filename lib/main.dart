@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:redditify/pages/global_page.dart';
 import 'package:redditify/states/global_state.dart';
+import 'package:redditify/states/loading_state.dart';
 import 'package:redditify/states/player_state.dart';
 import 'package:redditify/states/posts_state.dart';
 import 'package:redditify/states/subreddits_state.dart';
@@ -29,6 +30,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider<MyPlayerState>.value(
           value: _globalState.playerState,
+        ),
+        ChangeNotifierProvider<LoadingState>.value(
+          value: _globalState.loadingState,
         ),
       ],
       child: MaterialApp(

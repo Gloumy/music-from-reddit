@@ -34,7 +34,7 @@ class GlobalPage extends StatelessWidget {
                         SubredditPage(),
                       ],
                     ),
-                    if (state.isLoading) LoadingIndicator(),
+                    LoadingIndicator(),
                   ],
                 );
               },

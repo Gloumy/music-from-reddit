@@ -32,9 +32,11 @@ class GlobalState with ChangeNotifier {
     _loadingState = LoadingState();
   }
 
-  void selectSubreddit(String subreddit, {String sortBy = "new"}) {
+  void selectSubreddit(String subreddit, {String sortBy = "new"}) async {
     _subredditsState.selectSubreddit(subreddit, sortBy);
-    _postsState.retrievePosts(subreddit, sortBy);
+    _loadingState.setBusy(true, mainText: "Fetching threads ..");
+    await _postsState.retrievePosts(subreddit, sortBy);
+    _loadingState.setBusy(false);
     setVisibleIndex(VisibleItem.SubredditPage);
     notifyListeners();
   }

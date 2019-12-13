@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:redditify/pages/home_page.dart';
+import 'package:redditify/pages/loading_indicator.dart';
 import 'package:redditify/pages/subreddit_page.dart';
 import 'package:redditify/presenters/subreddits/subreddit_genre_page.dart';
 import 'package:redditify/states/global_state.dart';
@@ -29,6 +30,7 @@ class GlobalPage extends StatelessWidget {
                     HomePage(),
                     SubredditGenrePage(),
                     SubredditPage(),
+                    LoadingIndicator(),
                   ],
                 );
               },

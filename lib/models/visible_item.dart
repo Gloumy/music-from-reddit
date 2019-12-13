@@ -1,1 +1,1 @@
-enum VisibleItem { SubredditGenresList, SubredditGenrePage, SubredditPage }
+enum VisibleItem { SubredditGenresList, SubredditGenrePage, SubredditPage, LoadingIndicator }

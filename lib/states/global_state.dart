@@ -1,7 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:redditify/models/genre.dart';
-import 'package:redditify/models/post.dart';
+import 'package:redditify/models/playlist.dart';
 import 'package:redditify/models/visible_item.dart';
+import 'package:redditify/services/playlist_service.dart';
 import 'package:redditify/states/player_state.dart';
 import 'package:redditify/states/posts_state.dart';
 import 'package:redditify/states/subreddits_state.dart';
@@ -11,6 +12,7 @@ class GlobalState with ChangeNotifier {
   SubredditsState _subredditsState;
   MyPlayerState _playerState;
   int _visibleIndex = 0;
+  int _previousIndex;
 
   PostsState get postsState => _postsState;
   SubredditsState get subredditsState => _subredditsState;
@@ -39,9 +41,12 @@ class GlobalState with ChangeNotifier {
   }
 
   void playSongList() async {
-    List<Post> playlist = List.from(postsState.posts);
-    _playerState.setPlaylistName(_subredditsState.selectedSubreddit);
-    _playerState.playSongList(playlist);
+    setBusy(true);
+    Playlist playlist = await PlaylistService(
+            title: _subredditsState.selectedSubreddit,
+            posts: List.from(postsState.posts))
+        .createPlaylist();
+    setBusy(false);
   }
 
   void stopAudio() async {
@@ -62,5 +67,16 @@ class GlobalState with ChangeNotifier {
     _subredditsState.selectGenre(genre);
     setVisibleIndex(VisibleItem.SubredditGenrePage);
     notifyListeners();
+  }
+
+  void setBusy(bool value) {
+    if (value) {
+      _previousIndex = _visibleIndex;
+      setVisibleIndex(VisibleItem.LoadingIndicator);
+      notifyListeners();
+    } else {
+      _visibleIndex = _previousIndex;
+      notifyListeners();
+    }
   }
 }

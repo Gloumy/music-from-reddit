@@ -21,4 +21,9 @@ class PlayAudioService {
 
     await _audioPlayer.play(streamInfo.audio.first.url);
   }
+
+  Future<void> playSongsList(List<String> songsUrl) async {
+    _audioPlayer.release();
+    _audioPlayer.playAll(songsUrl);
+  }
 }

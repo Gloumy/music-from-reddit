@@ -1,14 +1,13 @@
 import 'package:flutter_exoplayer/audioplayer.dart';
 import 'package:flutter/foundation.dart';
 import 'package:redditify/models/playlist.dart';
-import 'package:redditify/models/post.dart';
+import 'package:redditify/models/playlist_item.dart';
 import 'package:redditify/services/play_audio_service.dart';
 
 class MyPlayerState with ChangeNotifier {
   final PlayAudioService _playAudioService = PlayAudioService();
   bool _isPlaying = false;
   Playlist _playlist = Playlist.empty();
-  String _playlistName;
   int _currentSongIndex;
   PlayerState _audioPlayerState;
   String _currentSongTitle;
@@ -18,7 +17,6 @@ class MyPlayerState with ChangeNotifier {
   PlayAudioService get playAudioService => _playAudioService;
   bool get isPlaying => _isPlaying;
   Playlist get playlist => _playlist;
-  String get playlistName => _playlistName;
   int get currentSongIndex => _currentSongIndex;
   PlayerState get audioPlayerState => _audioPlayerState;
   String get currentSongTitle => _currentSongTitle;
@@ -68,7 +66,6 @@ class MyPlayerState with ChangeNotifier {
   }
 
   Future<void> playSong(String youtubeUrl, String title) async {
-    _playlist = [];
     _currentSongTitle = title;
     _isPlaying = true;
     notifyListeners();
@@ -80,16 +77,15 @@ class MyPlayerState with ChangeNotifier {
     _playlist = playlist;
     _currentSongIndex = 0;
     _currentSongTitle = _playlist.songs[_currentSongIndex].title;
-    _playAudioService.audioPlayer
-        .playAll(_playlist.songs.map((s) => s.audioStreamUrl).toList());
+    _playAudioService
+        .playSongsList(_playlist.songs.map((s) => s.audioStreamUrl).toList());
     _isPlaying = true;
     notifyListeners();
-      }
+  }
 
   Future<void> stopAudio() async {
     _playAudioService.audioPlayer.stop();
     _currentSongIndex = 0;
-    _playlist = [];
     _currentSongTitle = null;
     _currentSongMaxDuration = null;
     _currentSongPosition = null;

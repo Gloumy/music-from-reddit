@@ -17,7 +17,7 @@ class SongsList extends StatelessWidget {
           itemBuilder: (context, index) {
             return SongTile(
               song: state.playlist.songs[index],
-              past: index < state.currentSongIndex,
+              status: state.playlist.songs[index].status,
               index: index,
             );
           },

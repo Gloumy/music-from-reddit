@@ -49,7 +49,21 @@ class MyPlayerState with ChangeNotifier {
         .listen((int index) {
       _currentSongIndex = index;
       _currentSongTitle = _playlist.songs[index].title;
+      if (index > 0)
+        _playlist.songs.sublist(0, index).forEach((s) {
+          if (s.status != PlaylistItemStatus.ERROR)
+            s.status = PlaylistItemStatus.PLAYED;
+        });
+      _playlist.songs[index].status = PlaylistItemStatus.PLAYING;
+      if (index <= _playlist.songs.length)
+        _playlist.songs
+            .sublist(index + 1)
+            .forEach((s) => s.status = PlaylistItemStatus.PENDING);
       notifyListeners();
+    });
+    _playAudioService.audioPlayer.onPlayerError.listen((String error) {
+      _playlist.songs[_currentSongIndex].status = PlaylistItemStatus.ERROR;
+      playNextSong();
     });
   }
 

@@ -6,7 +6,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Image.asset("assets/images/logo.png"),
+        title: Image.asset("assets/images/logo.png",height: 60,),
         centerTitle: true,
         elevation: 5.0,
       ),

@@ -85,19 +85,13 @@ class MyPlayerState with ChangeNotifier {
 
   Future<void> playNextSong() async {
     if (canPlayNext) {
-      _currentSongIndex++;
-      _currentSongTitle = _playlist[_currentSongIndex].title;
-      notifyListeners();
-      _playAudioService.playAudio(_playlist[_currentSongIndex].url);
+      _playAudioService.audioPlayer.next();
     }
   }
 
   Future<void> playPreviousSong() async {
     if (canPlayPrevious) {
-      _currentSongIndex--;
-      _currentSongTitle = _playlist[_currentSongIndex].title;
-      notifyListeners();
-      _playAudioService.playAudio(_playlist[_currentSongIndex].url);
+      _playAudioService.audioPlayer.previous();
     }
   }
 
@@ -109,15 +103,10 @@ class MyPlayerState with ChangeNotifier {
     _playAudioService.audioPlayer.resume();
   }
 
-  void setPlaylistName(String name) {
-    _playlistName = name;
-    notifyListeners();
-  }
-
-  Future<void> jumpToSong(int index) async {
-    _currentSongIndex = index;
-    _currentSongTitle = _playlist[_currentSongIndex].title;
-    notifyListeners();
-    _playAudioService.playAudio(_playlist[_currentSongIndex].url);
-  }
+  // Future<void> jumpToSong(int index) async {
+  //   _currentSongIndex = index;
+  //   _currentSongTitle = _playlist[_currentSongIndex].title;
+  //   notifyListeners();
+  //   _playAudioService.playAudio(_playlist[_currentSongIndex].url);
+  // }
 }

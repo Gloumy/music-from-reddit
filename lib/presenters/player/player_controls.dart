@@ -19,7 +19,7 @@ class PlayerControls extends StatelessWidget {
                   Icons.skip_previous,
                   color: state.canPlayPrevious ? blueColor : mediumGreyColor,
                 ),
-                // onTap: () => state.playPreviousSong(),
+                onTap: () => state.playPreviousSong(),
               ),
               if (state.audioPlayerState == PlayerState.PAUSED ||
                   !state.isPlaying)
@@ -48,7 +48,7 @@ class PlayerControls extends StatelessWidget {
                   Icons.skip_next,
                   color: state.canPlayNext ? blueColor : mediumGreyColor,
                 ),
-                // onTap: () => state.playNextSong(),
+                onTap: () => state.playNextSong(),
               ),
             ],
           ),

@@ -12,12 +12,13 @@ class GlobalState with ChangeNotifier {
   SubredditsState _subredditsState;
   MyPlayerState _playerState;
   int _visibleIndex = 0;
-  int _previousIndex;
+  bool _isLoading = false;
 
   PostsState get postsState => _postsState;
   SubredditsState get subredditsState => _subredditsState;
   MyPlayerState get playerState => _playerState;
   int get visibleIndex => _visibleIndex;
+  bool get isLoading => _isLoading;
 
   GlobalState() {
     _initializeStates();
@@ -71,13 +72,7 @@ class GlobalState with ChangeNotifier {
   }
 
   void setBusy(bool value) {
-    if (value) {
-      _previousIndex = _visibleIndex;
-      setVisibleIndex(VisibleItem.LoadingIndicator);
-      notifyListeners();
-    } else {
-      _visibleIndex = _previousIndex;
-      notifyListeners();
-    }
+    _isLoading = value;
+    notifyListeners();
   }
 }

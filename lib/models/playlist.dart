@@ -8,4 +8,6 @@ class Playlist {
     this.title,
     this.songs,
   });
+
+  factory Playlist.empty() => Playlist(songs: [], title: "");
 }

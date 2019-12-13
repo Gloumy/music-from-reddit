@@ -7,7 +7,7 @@ import 'package:redditify/services/play_audio_service.dart';
 class MyPlayerState with ChangeNotifier {
   final PlayAudioService _playAudioService = PlayAudioService();
   bool _isPlaying = false;
-  Playlist _playlist = Playlist();
+  Playlist _playlist = Playlist.empty();
   String _playlistName;
   int _currentSongIndex;
   PlayerState _audioPlayerState;

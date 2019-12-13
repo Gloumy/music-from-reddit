@@ -47,10 +47,16 @@ class GlobalState with ChangeNotifier {
 
   void playSongList() async {
     _loadingState.setBusy(true, mainText: "Creating playlist ..");
-    Playlist playlist = await PlaylistService(
-            title: _subredditsState.selectedSubreddit,
-            posts: List.from(postsState.posts))
-        .createPlaylist();
+    PlaylistService _playlistService = PlaylistService(
+        title: _subredditsState.selectedSubreddit,
+        posts: List.from(postsState.posts));
+    Stream<int> stream = _playlistService.streamController.stream;
+    stream.listen((int value) {
+      _loadingState.setBusy(true,
+          mainText: "Creating playlist ..",
+          subText: "${value.toString()}/${postsState.postsLength}");
+    });
+    Playlist playlist = await _playlistService.createPlaylist();
     _loadingState.setBusy(false);
     playerState.playSongList(playlist);
   }

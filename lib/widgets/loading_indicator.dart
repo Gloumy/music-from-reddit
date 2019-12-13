@@ -33,6 +33,10 @@ class LoadingIndicator extends StatelessWidget {
                   Text(
                     state.mainText,
                     style: TextStyle(color: lightGreyColor),
+                  ),
+                  Text(
+                    state.subText,
+                    style: TextStyle(color: lightGreyColor),
                   )
                 ],
               ),

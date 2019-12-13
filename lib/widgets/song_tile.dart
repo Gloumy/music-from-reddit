@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:redditify/models/post.dart';
+import 'package:redditify/models/playlist_item.dart';
 import 'package:redditify/states/player_state.dart';
 import 'package:redditify/utils/colors.dart';
 
 class SongTile extends StatelessWidget {
-  final Post song;
+  final PlaylistItem song;
   final bool past;
   final int index;
 

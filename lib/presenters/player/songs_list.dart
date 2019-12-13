@@ -13,10 +13,10 @@ class SongsList extends StatelessWidget {
           separatorBuilder: (context, index) => Divider(
             color: mediumGreyColor,
           ),
-          itemCount: state.playlist.length,
+          itemCount: state.playlist.songs.length,
           itemBuilder: (context, index) {
             return SongTile(
-              song: state.playlist[index],
+              song: state.playlist.songs[index],
               past: index < state.currentSongIndex,
               index: index,
             );

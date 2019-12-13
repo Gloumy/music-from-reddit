@@ -12,7 +12,7 @@ class PlayerActionButton extends StatelessWidget {
       return FloatingActionButton(
         backgroundColor: blueColor,
         child: state.isPlaying &&
-                state.playlistName ==
+                state.playlist.title ==
                     Provider.of<SubredditsState>(context).selectedSubreddit
             ? Icon(
                 Icons.stop,
@@ -23,7 +23,7 @@ class PlayerActionButton extends StatelessWidget {
                 color: lightGreyColor,
               ),
         onPressed: () => state.isPlaying &&
-                state.playlistName ==
+                state.playlist.title ==
                     Provider.of<SubredditsState>(context).selectedSubreddit
             ? Provider.of<GlobalState>(context).stopAudio()
             : Provider.of<GlobalState>(context).playSongList(),

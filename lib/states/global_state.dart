@@ -47,6 +47,7 @@ class GlobalState with ChangeNotifier {
             posts: List.from(postsState.posts))
         .createPlaylist();
     setBusy(false);
+    playerState.playSongList(playlist);
   }
 
   void stopAudio() async {

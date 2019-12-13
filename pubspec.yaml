@@ -29,6 +29,7 @@ dependencies:
   youtube_extractor: ^1.0.4
   sliding_up_panel: ^0.3.6
   flutter_exoplayer: ^0.5.4
+  flutter_spinkit: ^4.1.0
 
 dev_dependencies:
   flutter_test:

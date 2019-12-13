@@ -84,7 +84,7 @@ class MyPlayerState with ChangeNotifier {
   }
 
   Future<void> stopAudio() async {
-    _playAudioService.audioPlayer.stop();
+    _playAudioService.audioPlayer.release();
     _currentSongIndex = 0;
     _currentSongTitle = null;
     _currentSongMaxDuration = null;

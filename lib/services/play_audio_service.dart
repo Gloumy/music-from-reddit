@@ -28,14 +28,9 @@ class PlayAudioService {
     _audioPlayer.release();
     _audioPlayer.playAll(
       playlist.streamUrls,
-      // playerMode: PlayerMode.FOREGROUND,
-      // audioNotifications: <AudioNotification>[
-      //   AudioNotification(
-      //     title: "hello",
-      //     smallIconFileName: "ic_launcher",
-      //     isLocal: false,
-      //   ),
-      // ],
+      audioNotifications: playlist.notifications,
+      playerMode: PlayerMode.FOREGROUND,
+      respectAudioFocus: true,
     );
   }
 }

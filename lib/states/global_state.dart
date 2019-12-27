@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:redditify/models/genre.dart';
 import 'package:redditify/models/playlist.dart';
+import 'package:redditify/models/post.dart';
 import 'package:redditify/models/visible_item.dart';
 import 'package:redditify/services/playlist_service.dart';
 import 'package:redditify/states/loading_state.dart';
@@ -41,8 +42,13 @@ class GlobalState with ChangeNotifier {
     notifyListeners();
   }
 
-  void playSong(String youtubeUrl, String title) async {
-    await _playerState.playSong(youtubeUrl, title);
+  void playSong(Post post) async {
+    _loadingState.setBusy(true, mainText: "Creating item ..");
+    PlaylistService _playlistService = PlaylistService(
+        title: _subredditsState.selectedSubreddit, posts: [post]);
+    Playlist playlist = await _playlistService.createPlaylist();
+    _loadingState.setBusy(false);
+    await _playerState.playSong(playlist.songs.first);
   }
 
   void playSongList() async {

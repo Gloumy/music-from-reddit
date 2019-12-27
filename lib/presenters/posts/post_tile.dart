@@ -30,8 +30,7 @@ class PostTile extends StatelessWidget {
             ),
           ),
           PlaySinglePostButton(
-            url: post.url,
-            title: post.title,
+            post: post,
           ),
         ],
       ),

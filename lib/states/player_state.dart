@@ -76,12 +76,12 @@ class MyPlayerState with ChangeNotifier {
     });
   }
 
-  Future<void> playSong(String youtubeUrl, String title) async {
-    _currentSongTitle = title;
+  Future<void> playSong(PlaylistItem item) async {
+    _currentSongTitle = item.title;
     _isPlaying = true;
     notifyListeners();
 
-    await _playAudioService.playAudio(youtubeUrl);
+    _playAudioService.playAudio(item);
   }
 
   Future<void> playSongList(Playlist playlist) async {

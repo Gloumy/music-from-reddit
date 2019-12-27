@@ -18,7 +18,6 @@ class PlaylistService {
   StreamController<int> streamController = StreamController<int>();
 
   Future<Playlist> createPlaylist() async {
-    print("Create playlist");
     List<PlaylistItem> _items = [];
     RegExp exp = RegExp(
         r"(?:youtube(?:-nocookie)?\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})");
@@ -33,12 +32,10 @@ class PlaylistService {
             title: posts[i].title,
             audioStreamUrl: streamInfo.audio.first.url,
           ));
-        print("Added ${posts[i].title}");
       } catch (e) {
         print("Couldn't add song ${posts[i].title}");
       }
     }
-    print("Added ${_items.length} songs");
     Playlist playlist = Playlist(title: title, songs: _items);
 
     return playlist;

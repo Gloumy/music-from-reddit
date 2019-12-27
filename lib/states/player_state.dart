@@ -1,3 +1,4 @@
+import 'package:flutter_exoplayer/audio_notification.dart';
 import 'package:flutter_exoplayer/audioplayer.dart';
 import 'package:flutter/foundation.dart';
 import 'package:redditify/models/playlist.dart';
@@ -61,7 +62,17 @@ class MyPlayerState with ChangeNotifier {
     });
     _playAudioService.audioPlayer.onPlayerError.listen((String error) {
       _playlist.songs[_currentSongIndex].status = PlaylistItemStatus.ERROR;
+      print("ERROR : $error");
       playNextSong();
+    });
+    _playAudioService.audioPlayer.onNotificationActionCallback
+        .listen((NotificationActionName notificationAction) {
+      switch (notificationAction) {
+        case NotificationActionName.PAUSE:
+          pauseAudio();
+          break;
+        default:
+      }
     });
   }
 

@@ -8,10 +8,16 @@ class Playlist {
   List<String> get streamUrls => songs.map((s) => s.audioStreamUrl).toList();
   List<AudioNotification> get notifications {
     List<AudioNotification> _notifications = [];
-    songs.forEach((s) => _notifications.add(AudioNotification(
+    songs.forEach(
+      (s) => _notifications.add(
+        AudioNotification(
           title: s.title,
           smallIconFileName: "ic_launcher",
-        )));
+          isLocal: false,
+          largeIconUrl: s.thumbnailUrl,
+        ),
+      ),
+    );
 
     return _notifications;
   }

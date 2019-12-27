@@ -17,8 +17,7 @@ class PlayAudioService {
       audioNotification: AudioNotification(
         smallIconFileName: "ic_launcher",
         title: item.title,
-        largeIconUrl:
-            "https://raw.githubusercontent.com/Gloumy/music-from-reddit/master/assets/images/logo.png",
+        largeIconUrl: item.thumbnailUrl,
         isLocal: false,
       ),
     );

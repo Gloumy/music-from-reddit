@@ -31,6 +31,7 @@ class PlaylistService {
           _items.add(PlaylistItem(
             title: posts[i].title,
             audioStreamUrl: streamInfo.audio.first.url,
+            thumbnailUrl: posts[i].thumbnailUrl,
           ));
       } catch (e) {
         print("Couldn't add song ${posts[i].title}");

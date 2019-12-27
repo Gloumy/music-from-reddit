@@ -88,8 +88,7 @@ class MyPlayerState with ChangeNotifier {
     _playlist = playlist;
     _currentSongIndex = 0;
     _currentSongTitle = _playlist.songs[_currentSongIndex].title;
-    _playAudioService
-        .playSongsList(_playlist.songs.map((s) => s.audioStreamUrl).toList());
+    _playAudioService.playSongsList(playlist);
     _isPlaying = true;
     notifyListeners();
   }

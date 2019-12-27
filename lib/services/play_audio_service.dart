@@ -1,5 +1,6 @@
 import 'package:flutter_exoplayer/audio_notification.dart';
 import 'package:flutter_exoplayer/audioplayer.dart';
+import 'package:redditify/models/playlist.dart';
 import 'package:redditify/models/playlist_item.dart';
 
 class PlayAudioService {
@@ -23,16 +24,18 @@ class PlayAudioService {
     );
   }
 
-  Future<void> playSongsList(List<String> songsUrl) async {
+  Future<void> playSongsList(Playlist playlist) async {
     _audioPlayer.release();
-    _audioPlayer.playAll(songsUrl,
-        playerMode: PlayerMode.FOREGROUND,
-        audioNotifications: <AudioNotification>[
-          AudioNotification(
-            title: "hello",
-            smallIconFileName: "ic_launcher",
-            isLocal: false,
-          ),
-        ]);
+    _audioPlayer.playAll(
+      playlist.streamUrls,
+      // playerMode: PlayerMode.FOREGROUND,
+      // audioNotifications: <AudioNotification>[
+      //   AudioNotification(
+      //     title: "hello",
+      //     smallIconFileName: "ic_launcher",
+      //     isLocal: false,
+      //   ),
+      // ],
+    );
   }
 }

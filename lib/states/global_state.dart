@@ -77,8 +77,10 @@ class GlobalState with ChangeNotifier {
   }
 
   void goBack() {
-    _visibleIndex--;
-    notifyListeners();
+    if (_visibleIndex > 0) {
+      _visibleIndex--;
+      notifyListeners();
+    }
   }
 
   void selectGenre(Genre genre) {

@@ -14,38 +14,49 @@ class GlobalPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Provider<PanelController>.value(
-        value: _panelController,
-        child: SlidingUpPanel(
-          minHeight: 75,
-          body: Container(
-            height: double.maxFinite,
-            width: double.maxFinite,
-            child: Consumer<GlobalState>(
-              builder: (context, state, _) {
-                return Stack(
-                  children: <Widget>[
-                    IndexedStack(
-                      index: state.visibleIndex,
-                      children: <Widget>[
-                        HomePage(),
-                        SubredditGenrePage(),
-                        SubredditPage(),
-                      ],
-                    ),
-                    LoadingIndicator(),
-                  ],
-                );
-              },
+    return WillPopScope(
+      onWillPop: () async {
+        if (_panelController.isPanelOpen()) {
+          _panelController.close();
+        } else {
+          Provider.of<GlobalState>(context).goBack();
+        }
+
+        return false;
+      },
+      child: Scaffold(
+        body: Provider<PanelController>.value(
+          value: _panelController,
+          child: SlidingUpPanel(
+            minHeight: 75,
+            body: Container(
+              height: double.maxFinite,
+              width: double.maxFinite,
+              child: Consumer<GlobalState>(
+                builder: (context, state, _) {
+                  return Stack(
+                    children: <Widget>[
+                      IndexedStack(
+                        index: state.visibleIndex,
+                        children: <Widget>[
+                          HomePage(),
+                          SubredditGenrePage(),
+                          SubredditPage(),
+                        ],
+                      ),
+                      LoadingIndicator(),
+                    ],
+                  );
+                },
+              ),
+              padding: EdgeInsets.only(bottom: 75),
             ),
-            padding: EdgeInsets.only(bottom: 75),
+            panel: PlaylistPanel(),
+            collapsed: CollapsedPlayer(),
+            controller: _panelController,
+            backdropOpacity: 0.5,
+            backdropEnabled: true,
           ),
-          panel: PlaylistPanel(),
-          collapsed: CollapsedPlayer(),
-          controller: _panelController,
-          backdropOpacity: 0.5,
-          backdropEnabled: true,
         ),
       ),
     );

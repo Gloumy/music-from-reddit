@@ -26,11 +26,12 @@ class PlaylistService {
       String youtubeId = exp.firstMatch(posts[i].url).group(1);
       try {
         var yt = YoutubeExplode();
+        var video = await yt.videos.get(youtubeId);
         var manifest = await yt.videos.streamsClient.getManifest(youtubeId);
         var streamInfo = manifest.audioOnly.withHighestBitrate();
         if (streamInfo.url != null)
           _items.add(PlaylistItem(
-            title: posts[i].title,
+            title: video.title,
             audioStreamUrl: streamInfo.url.toString(),
             thumbnailUrl: posts[i].thumbnailUrl,
           ));

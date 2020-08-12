@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:redditify/models/playlist.dart';
 import 'package:redditify/models/playlist_item.dart';
 import 'package:redditify/models/post.dart';
-import 'package:youtube_extractor/youtube_extractor.dart';
+import 'package:youtube_explode_dart/youtube_explode_dart.dart' hide Playlist;
 
 class PlaylistService {
   final List<Post> posts;
@@ -25,12 +25,13 @@ class PlaylistService {
       streamController.add(i + 1);
       String youtubeId = exp.firstMatch(posts[i].url).group(1);
       try {
-        var streamInfo =
-            await YouTubeExtractor().getMediaStreamsAsync(youtubeId);
-        if (streamInfo.audio.isNotEmpty && streamInfo.audio.first.url != null)
+        var yt = YoutubeExplode();
+        var manifest = await yt.videos.streamsClient.getManifest(youtubeId);
+        var streamInfo = manifest.audioOnly.withHighestBitrate();
+        if (streamInfo.url != null)
           _items.add(PlaylistItem(
             title: posts[i].title,
-            audioStreamUrl: streamInfo.audio.first.url,
+            audioStreamUrl: streamInfo.url.toString(),
             thumbnailUrl: posts[i].thumbnailUrl,
           ));
       } catch (e) {
